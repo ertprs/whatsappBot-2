@@ -216,3 +216,13 @@ text-center {
     padding-top: 7px;
 }
 
+.title {
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.title h6 {
+    color: lightskyblue;
+}
