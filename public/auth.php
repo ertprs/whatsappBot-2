@@ -36,7 +36,7 @@
       <div class="row text-center">
         <div class="col-sm-12">      
          <a href="#" alt="VolantinoPiu homepage" title="VolantinoPiu homepage" class="logo">
-            <img src="logo_complete.png" class="img-responsive">
+            <img src="../logo_complete.png" class="img-responsive">
           </a>   
           <!-- <img class="banner-img img-fluid right-img wow slideInDown" src="img/half_logo_right.png" alt=""> -->
         </div>
@@ -53,32 +53,17 @@
               <div class="input_content">
                 <input type="number" id="numControll" class="form-control" readonly name="numero" value="<?php echo $_SESSION['num'] ?>" required><span>+39 | </span>
               </div>
-              <label>Seleziona regione</label>
-                <select class="form-control" id="reg" name="reg">
-                  <option value="xx">Seleziona</option>
-                  <?php
-                      require './bin/config.php';
-                      $sql = "SELECT DISTINCT `regione` FROM `puntivendita`";
-                      $query = mysqli_query($con, $sql);
-                          while ($row = mysqli_fetch_array($query)) {
-                              $select .= '<option>'.$row['regione'].'</option>';
-                          }
+              <label>Il nome</label>
+                <input type="text" class="form-control" name="nome" id="nome">
 
-                          echo $select;
-                  
-                  
-                  ?>
-                </select>
-    
-              <label>Seleziona la tua città</label>
-                <select class="form-control" id="citta" name="citta" disabled>
-                  
-                </select>
-    
-              <label>Seleziona punto vendita</label>
-                <div id="pv" style="min-height:40px"></div>
-      
-                <!-- <input type="submit" value="SALVA"  class="btn btn-success" style="margin-top:30px"> -->
+              <label>il cognome</label>
+                <input type="text" class="form-control" id="cognome" name="cognome">    
+                <div class="terms">
+                  <input type="checkbox" name="terms" required  id="terms">  I Agree Terms & Coditions
+                </div>
+                <div class="btn-box">
+                  <input type="submit" value="SALVA"  class="btn btn-success w100" style="margin-top:30px; width:100%">
+                </div>
             </form>
     
           </div>
@@ -92,7 +77,7 @@
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous">
   </script>
-                          
+             
 
   <script>
 
@@ -101,65 +86,33 @@
     toastr.options.timeOut = 100; // 3s
 
 
-  $('#numControll').on('click', function() {
-    toastr.warning('Il campo selezionatio non si può cambiare', 'Attenzione..');
-    toastr.options.timeOut = 2000;
-  })
+    $('#numControll').on('click', function() {
+      toastr.warning('Il campo selezionatio non si può cambiare', 'Attenzione..');
+      toastr.options.timeOut = 2000;
+    })
 
-  $('#reg').on('change', function() {
+
+
+    $(document).on('submit', '#registra_cluster', function(e) {
+      e.preventDefault();
       $.ajax({
-          url: './vendor/location.php',
+          url: '../vendor/terms.php',
           type: 'post',
-          data: {
-          regione : this.value
-        },
-        success: function(result) {
-          $("#citta").html(result);
-          $('#citta').prop('disabled', false);
-          $('#citta').focus();
-        },
-      });
-    });
+          data: $('#registra_cluster').serialize(),
 
-    $('#citta').on('change focus', function() {
-
-      let seesionNumber = "<?php  echo $_SESSION['num'] ?>"
-      $.ajax({
-          url: './vendor/address.php',
-          type: 'post',
-          data: {
-              address: this.value,
-              number: seesionNumber,
-              id: this.id 
-          },
           success: function(result) {
-              $("#pv").html(result);
-              $('.check-box').click(function(e) {
-                $(this).attr('checked', true);
-                
-                let getStatus =  ($(this)).data('ean');
-                
-                $.ajax({
-                  url: './vendor/auth.php',
-                  type: 'post',
-                  data : {
-                    status: getStatus,
-                    id: this.id,
-                    number: seesionNumber
-                  },
-                  success: function(result) {
-                    toastr.success('Modifiche salvate..', 'Successo');
-                    toastr.options.timeOut = 700;
-                  }
-                });
-
-                
-      });
+            toastr.success('Dati inseritit..', 'Successo');
+            toastr.options.timeOut = 2000;
+            setTimeout(() => {
+              location.href= "https://testing3.volantinopiu.it/auth/login.php";              
+            }, 2500);
+              
           }
       })
-    });
+    });           
 
-    
+
+ 
 
   });
     

@@ -210,3 +210,8 @@ text-center {
 	display: inline-block;
 	margin: 100px auto;
 }
+
+
+.terms { 
+    padding-top: 5px;
+}
