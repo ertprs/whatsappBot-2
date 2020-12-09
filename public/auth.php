@@ -14,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -44,22 +44,24 @@
     </div>
   </div>
 
-     <section style="background-color: #8ec044;">
+     <section style="background-color: grey;">
         <div class="container">
           <div class="row">
-
+              <div class='title'>
+                  <h6>Inserisci le informazioni e salva per selezionare i tuoi supermercati SISA preferiti</h6>
+              </div>
             <form id="registra_cluster">
               <label>Il tuo numero di telefono</label>
               <div class="input_content">
                 <input type="number" id="numControll" class="form-control" readonly name="numero" value="<?php echo $_SESSION['num'] ?>" required><span>+39 | </span>
               </div>
-              <label>Il nome</label>
-                <input type="text" class="form-control" name="nome" id="nome">
+              <label>Nome</label>
+                <input type="text" class="form-control" name="nome" id="nome" minlength="3" required>
 
-              <label>il cognome</label>
-                <input type="text" class="form-control" id="cognome" name="cognome">    
-                <div class="terms">
-                  <input type="checkbox" name="terms" required  id="terms">  I Agree Terms & Coditions
+              <label>Cognome</label>
+                <input type="text" class="form-control" id="cognome" name="cognome" minlength= "3" required>    
+                <div class="terms" style="padding-top: 7px;">
+                  <input type="checkbox" name="terms" required  id="terms" >  I Agree Terms & Coditions
                 </div>
                 <div class="btn-box">
                   <input type="submit" value="SALVA"  class="btn btn-success w100" style="margin-top:30px; width:100%">
@@ -82,29 +84,31 @@
   <script>
 
   $(document).ready(function() {
-    toastr.info('Caricamento della pagina..', 'Waiting..');
-    toastr.options.timeOut = 100; // 3s
-
-
+    
     $('#numControll').on('click', function() {
       toastr.warning('Il campo selezionatio non si può cambiare', 'Attenzione..');
       toastr.options.timeOut = 2000;
     })
 
-
+    let current_number = "<?php  echo $_SESSION['num'] ?>";
+   
 
     $(document).on('submit', '#registra_cluster', function(e) {
       e.preventDefault();
+     
       $.ajax({
           url: '../vendor/terms.php',
           type: 'post',
           data: $('#registra_cluster').serialize(),
 
-          success: function(result) {
+          complete: function(result) {
+            
             toastr.success('Dati inseritit..', 'Successo');
             toastr.options.timeOut = 2000;
+              
+            
             setTimeout(() => {
-              location.href= "https://testing3.volantinopiu.it/auth/login.php";              
+                location.href= `https://testing3.volantinopiu.it/auth/login.php?n=39${current_number}`;  
             }, 2500);
               
           }
