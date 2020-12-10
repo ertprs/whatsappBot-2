@@ -42,5 +42,5 @@ $current_user_number = $_POST['number'];
 
 
 
-?>
+
 
