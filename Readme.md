@@ -1,1 +1,1 @@
-1. Create folder bin(\auth\bin\config.php) with config settings (localhost, user, password, dbname...);
+1. Create folder bin(\bin\config.php) with config settings (localhost, user, password, dbname...);
