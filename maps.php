@@ -30,7 +30,7 @@ session_start();
     <div class="container">
         <div class="maps d-none d-sm-flex hidden-xs">
             <div class="btn-box">
-                    <button class="btn btn-success btn-customize">Click</button>
+                    <button id="sub_" class="btn btn-success btn-customize">Click</button>
             </div>
                 <div class="result">
                     <ul id="list">
@@ -52,6 +52,7 @@ session_start();
     <script>
     $(document).ready(function() {
         var current_session_number = "<?php  echo $_SESSION['num'] ?>";
+
         $.ajax({
             url: './vendor/checkbox.php',
             type: 'post',
@@ -69,29 +70,41 @@ session_start();
                 
                
                 var current_id = $(this).attr('data-id');
-
-                    console.log(current_session_number);
         
-                            $.ajax({
-                                url: './vendor/auth.php',
-                                type: 'post',
-                                data : {
-                                    id: current_id,
-                                    number: current_session_number
-                                },
-                                success: function(result) {
-                                    toastr.success('Modifiche salvate..', 'Successo');
-                                    toastr.options.timeOut = 1000;
-                                }
-                            });
 
-                            // new fix
+                    $.ajax({
+                        url: './vendor/auth.php',
+                        type: 'post',
+                        data : {
+                            id: current_id,
+                            number: current_session_number
+                        },
+                        success: function(result) {
+                            toastr.info('Punto vendita selezionato..');
+                            toastr.options.timeOut = 300;
+                        }
+                    });
+
                         
                 });
 
                 }
             });
         
+            $('#sub_').on('click', function(e) {
+                e.preventDefault();
+                    $.ajax({
+                        url: './vendor/submit.php',
+                        type: 'post',
+                        data: {
+                            number: current_session_number
+                        },
+                        success: function() {
+                            toastr.success('Iscrizione attiavata...', 'Successo');
+                            toastr.options.timeOut = 800;
+                        }
+                    })
+            });
 
         });
 

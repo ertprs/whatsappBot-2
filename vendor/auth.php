@@ -20,10 +20,10 @@
         $id = substr($Getid, 3);
        
 
-    
+    /* make true status in $sql */
         
         
-            $sql = "INSERT INTO `user_pv` (`numero`,`id_pv`, `time_stamp`, `msgFromPv`, `status`) VALUES('$num', '$id', NULL, 'true', '1') ON DUPLICATE KEY UPDATE `numero`='$num', `id_pv`='$id', `msgFromPv`='false', `status`= '0'";
+            $sql = "INSERT INTO `user_pv` (`numero`,`id_pv`, `time_stamp`, `msgFromPv`, `status`) VALUES('$num', '$id', NULL, 'false', '1') ON DUPLICATE KEY UPDATE `numero`='$num', `id_pv`='$id', `msgFromPv`='false', `status`= '0'";
             $exc = mysqli_query($con, $sql);
 
             $sq = "SELECT * FROM `user_pv` WHERE `status` = '0' ";
