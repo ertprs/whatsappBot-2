@@ -108,7 +108,7 @@
               
             
             setTimeout(() => {
-                location.href= `https://testing3.volantinopiu.it/auth/login.php?n=39${current_number}`;  
+                location.href= `https://testing3.volantinopiu.it/auth/maps.php?n=39${current_number}`;  
             }, 2500);
               
           }
