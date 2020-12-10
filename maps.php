@@ -24,7 +24,7 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <title>Main page</title>
+    <title>Maps</title>
 </head>
 <body>
     <div class="container">
@@ -105,6 +105,9 @@ session_start();
                         }
                     })
             });
+
+
+           
 
         });
 
