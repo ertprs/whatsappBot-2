@@ -2,6 +2,7 @@
    
    require '../bin/config.php';
    header('Access-Control-Allow-Origin: *');
+  
     
     if($_POST['id'] !="" && $_POST['number'] != "") {
         function validate($data) {
@@ -12,13 +13,14 @@
         }
         validate($_POST);
 
-        $getNum = ($_POST['number']);
+        $num = ($_POST['number']);
         // $fn = '39';
         // $num = $fn.$getNum;
         $Getid = $_POST['id'];
         $id = substr($Getid, 3);
-        $num = $getNum;
+       
 
+    
         
         
             $sql = "INSERT INTO `user_pv` (`numero`,`id_pv`, `time_stamp`, `msgFromPv`, `status`) VALUES('$num', '$id', NULL, 'true', '1') ON DUPLICATE KEY UPDATE `numero`='$num', `id_pv`='$id', `msgFromPv`='false', `status`= '0'";

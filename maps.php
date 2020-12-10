@@ -53,7 +53,7 @@ session_start();
     $(document).ready(function() {
         var current_session_number = "<?php  echo $_SESSION['num'] ?>";
         $.ajax({
-            url: './vendor/maps.php',
+            url: './vendor/checkbox.php',
             type: 'post',
             data: {
                 number : current_session_number
@@ -70,7 +70,7 @@ session_start();
                
                 var current_id = $(this).attr('data-id');
 
-                    
+                    console.log(current_session_number);
         
                             $.ajax({
                                 url: './vendor/auth.php',
