@@ -134,7 +134,7 @@
 
     $('#citta').on('change focus', function() {
 
-      let seesionNumber = "<?php  echo $_SESSION['num'] ?>"
+      let seesionNumber = "<?php  echo $_SESSION['num'] ?>";
       $.ajax({
           url: './vendor/address.php',
           type: 'post',

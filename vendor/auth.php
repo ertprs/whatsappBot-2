@@ -13,9 +13,13 @@
         validate($_POST);
 
         $getNum = ($_POST['number']);
-        $fn = '39';
-        $num = $fn.$getNum;
-        $id = $_POST['id'];
+        // $fn = '39';
+        // $num = $fn.$getNum;
+        $Getid = $_POST['id'];
+        $id = substr($Getid, 3);
+        $num = $getNum;
+
+        
         
             $sql = "INSERT INTO `user_pv` (`numero`,`id_pv`, `time_stamp`, `msgFromPv`, `status`) VALUES('$num', '$id', NULL, 'true', '1') ON DUPLICATE KEY UPDATE `numero`='$num', `id_pv`='$id', `msgFromPv`='false', `status`= '0'";
             $exc = mysqli_query($con, $sql);

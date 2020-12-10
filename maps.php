@@ -1,11 +1,11 @@
 <?php
 session_start();
-   $get = $_GET['n'];
+   $current_user_number = $_GET['n'];
   /* $nm1 = substr_replace($get, ' ',strlen($get) - 5);
   $spazio = '';
   $nm = $spazio.substr($nm1,2); */
  
-  $_SESSION['num'] = trim($get);
+  $_SESSION['num'] = trim($current_user_number);
   
 
   ?>
@@ -36,13 +36,33 @@ session_start();
                     <ul id="list">
                         <?php
                         require './bin/config.php';
+
+                       
                             $sql = "SELECT DISTINCT `location`, `Indirizzo`, `idPuntoVendita`, `Lat`, `Lon` FROM `puntivendita`";
                             $query = mysqli_query($con,$sql);
                                 while($row = mysqli_fetch_assoc($query)) {
-                                
+                                    $id = $row['idPuntoVendita'];
+                                    $location = $row['location'];
+                                    $Lon =$row['Lon'];
+                                    $Lat = $row['Lat'];
+                                    $address = $row['Indirizzo'];
 
-                                    $html.= '<li class="center"><div>'.$row['location'].'</div></li>';
-                                    $html.='<li><input class="checkbox" type="checkbox" data-lon="'.$row['Lon'].'" data-lat="'.$row["Lat"].'"><div id="pv_'.$row["idPuntoVendita"].'" class="last">'.$row['Indirizzo'].'</div></li>';
+                                    
+
+                                    /* Control if checked state true in DB */
+                                    $checked = "SELECT `id_pv`, `numero`, `status` FROM `user_pv` WHERE `id_pv` = '$id' AND `numero` = '$current_user_number'";
+                                      $exc = mysqli_query($con, $checked);
+                                        $rows = mysqli_num_rows($exc);
+
+                                    if($rows > 0) {
+                                        $html.= '<li class="center"><div>'.$location.'</div></li>';
+                                        $html.='<li><input class="checkbox" type="checkbox" checked data-lon="'.$Lon.'" data-lat="'.$Lat.'" data-id="pv_'.$id.'"><div class="last">'.$address.'</div></li>';
+                                    } else {
+                                        $html.= '<li class="center"><div>'.$location.'</div></li>';
+                                        $html.='<li><input class="checkbox" type="checkbox" data-lon="'.$Lon.'" data-lat="'.$Lat.'" data-id="pv_'.$id.'"><div class="last">'.$address.'</div></li>';
+                                    }
+                                        
+                                  
 
                                     // $li .= '<li><div class="center">'.$row['location'].'</div>
                                     // <input class="checkbox" type="checkbox" data-lon="'.$row['Lon'].'" data-lat="'.$row["Lat"].'"><div id="pv_'.$row["idPuntoVendita"].'" class="last">'.$row['Indirizzo'].'</div>
@@ -74,15 +94,29 @@ session_start();
 
     <script>
         $(document).ready(function() {
-            $('.checkbox').on('change', function() {
+            $('.checkbox').click(function() {
                
                 var lat = $(this).attr('data-lat');
                 var long = $(this).attr('data-lon');
+                
+                var current_session_number = "<?php  echo $_SESSION['num'] ?>";
+                var current_id = $(this).attr('data-id');
 
                 if($(this).prop('checked')) { 
-                //    alert(`Latitudine is : ${lat} - Longitudine is : ${long}`);
-                    toastr.success(`Latitudine is : ${lat} - Longitudine is : ${long}`, 'Selezionato');
-                    toastr.options.timeOut = 1000;
+             
+                
+                    $.ajax({
+                        url: './vendor/auth.php',
+                        type: 'post',
+                        data : {
+                            id: current_id,
+                            number: current_session_number
+                        },
+                        success: function(result) {
+                            toastr.success('Modifiche salvate..', 'Successo');
+                            toastr.options.timeOut = 1000;
+                        }
+                    });
                 }
             });
 
