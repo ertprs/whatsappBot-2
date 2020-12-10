@@ -1,136 +1,221 @@
-body{
-    background-color: #fff;
-    color: #646a70;
-    font: normal 400 1.4rem / 1.8 "Lato", sans-serif;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased; 
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+body {
+  background-color: #fff;
+  color: #646a70;
+  font: normal 400 1.4rem / 1.8 "Muli", sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
 
+#mappa {
+  height: 100vh;
+  width: 100vw;
+}
 
+.mapsPv {
+  height: 75vh;
+  background: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  top: 10vh;
+  left: 30px;
+  z-index: 1;
+  transition: 0.5s;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+#jsres {
+  overflow-y: auto;
+  padding: 0;
+}
+
+.mapsPv ul li {
+  padding-bottom: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  font-size: 90%;
+  align-items: center;
+  cursor: pointer;
+}
+
+.mapsPv ul li a {
+  max-width: 15%;
+  padding: 5px;
+  background-color: #fff;
+}
+
+.mapsPv ul li .center {
+  flex: 1;
+  padding: 0 10px;
+  font-size: 70%;
+}
+
+.mapsPv h5 {
+  font-weight: bold;
+  font-size: 110%;
+}
+
+.mapsPv ul li .last span {
+  font-size: 70%;
+  display: block;
+}
+
+.mapsPv ul li .last {
+  float: right;
+  font-weight: bold;
+  margin-left: 15px;
+  width: 15%;
+  border-left: 1px solid #ccc;
+  text-align: center;
+  padding: 8px;
+}
+
+.popupPv h5 {
+    background-color: #eee;
+    padding: 5px 0;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.popupPv .indirizzo {
+    font-size: 80%;
+    margin: 5px 0;
+}
+
+.gm-style .gm-style-iw {
+    top: 0 !important;
+    left: 0 !important;
+    max-width: 300px !important;
+    padding-top: 10px;
+    display: block !important;
+    text-align: center;
+}
+
+.gm-style div div div div div div div div {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    color: #000;
+    font-size: 16px;
+}
 
 
 .maps {
-    height: 75%;
-    background: rgba(255, 255, 255, 0.7);
-    position: absolute;
-    top: 80px;
-    left: 30px;
-    z-index: 1;
-    transition: 0.5s;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    overflow: scroll;
-}
-@media  screen and (max-width: 480px){
-    .maps{
-        width:100% !important;
-        position: absolute;
-        top: 80px;
-        left: -11px;
-    }
-
-    
+  height: 75%;
+  background: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  top: 80px;
+  left: 30px;
+  z-index: 1;
+  transition: 0.5s;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
 }
 
 .back_vol {
-    text-decoration: none;
-    text-align: right;
-    font-size: 2rem;
-    font-style: italic;
-    color: #337ab7;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    padding: .8rem 1rem;
+  text-decoration: none;
+  text-align: right;
+  font-size: 2rem;
+  font-style: italic;
+  color: #337ab7;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding: .8rem 1rem;
 }
 
-a{
-    transition: all .3s;
-    color: #5e5e5e;
-    text-decoration: none;
+a {
+  transition: all .3s;
+  color: #5e5e5e;
+  text-decoration: none;
 }
 
 .maps .reuslt {
-    height: 100%;
-    background: rgba(248, 248, 248, 0.1);
-    outline: none;
-    overflow-x: auto;
+  height: 100%;
+  background: rgba(248, 248, 248, 0.1);
+  outline: none;
+  overflow-x: auto;
 }
 
 .maps .reuslt ul {
-    padding: 0 10px;
-    list-style-type: none;
-    font-family: Muli;
+  padding: 0 10px;
+  list-style-type: none;
+  font-family: Muli;
 }
 
 .d-sm-flex {
-    display: -ms-flexbox!important;
-    display: flex!important;
+  display: -ms-flexbox !important;
+  display: flex !important;
 }
 
 img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    vertical-align: middle;
-    border-style: none;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border-style: none;
 }
 
 .maps .result ul li {
-    padding-bottom: 10px;
-    padding: 5px;
-    margin-bottom: 10px;
-    background: rgba(255, 255, 255, 0.7);
-    display: flex;
-    font-size: 90%;
-    align-items: center;
-    cursor: pointer;
+  padding-bottom: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  font-size: 90%;
+  align-items: center;
+  cursor: pointer;
 }
 
 
 .maps .result ul li .center {
-    flex: 1;
-    padding: 0 10px;
+  flex: 1;
+  padding: 0 10px;
 }
 
 
 .maps .result ul li .last {
-    float: right;
-    font-weight: bold;
-    margin-left: 15px;
-    width: 100%;
-    border-left: 1px solid #ccc;
-    /* text-align: center; */
-    font-size: 100%;
-    padding: 8px;
-
-
+  float: right;
+  font-weight: bold;
+  margin-left: 15px;
+  width: 100%;
+  border-left: 1px solid #ccc;
+  /* text-align: center; */
+  font-size: 100%;
+  padding: 8px;
 }
 
 .btn-box {
-    position: fixed;
-    top:87%;
-    width: 50%;
-
+  position: fixed;
+  top: 87%;
+  width: 50%;
 }
 
 .btn-customize {
-    min-width: 100%;
-  
+  min-width: 100%;
+
 }
 
-@media  screen and (max-width: 480px){
-    .btn-box {
-        position: fixed;
-        top:90%;
-        left: 5%;
-        width: 90%;
-    
-    }
-    
+@media screen and (max-width: 480px) {
+  .btn-box {
+    position: fixed;
+    top: 90%;
+    left: 5%;
+    width: 90%;
+  }
+
+  .maps {
+    width: 100% !important;
+    position: absolute;
+    top: 80px;
+    left: -11px;
+  }
 }
-
-
-
