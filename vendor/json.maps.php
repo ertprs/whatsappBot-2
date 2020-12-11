@@ -2,7 +2,10 @@
 
 require __DIR__.'/../bin/config2.php';
 
+session_start();
+
 $tipo = $_POST['tipo'];
+$numero = $_SESSION['num'];
 
 if ($tipo == 'pv') {
     $a_json = array();
