@@ -10,14 +10,20 @@
     $nm = $spazio.substr($nm1,2);
 
     $_SESSION['num'] = trim($nm);
-    
-    if(isset($_SESSION['num']) && $_SESSION['status'] != '1') {
-        $_SESSION['status'] = '0';
+
+    if(isset($_SESSION['num'])) {
         header("location: ../public/register.php");
     }
-    else if(isset($_SESSION['num']) && $_SESSION['status'] == '1') {
-        header("location:../mappa.php");
-    }
+
+        /* Possible updating true */
+
+    // if(isset($_SESSION['num']) && $_SESSION['status'] != '1') {
+    //     $_SESSION['status'] = '0';
+    //     header("location: ../public/register.php");
+    // }
+    // else if(isset($_SESSION['num']) && $_SESSION['status'] == '1') {
+    //     header("location:../mappa.php");
+    // }
 
 
 
