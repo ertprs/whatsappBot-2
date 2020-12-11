@@ -16,7 +16,11 @@ function initMap() {
 
   map = new google.maps.Map(document.getElementById('mappa'), {
     center: new google.maps.LatLng(currentPos['lat'], currentPos['lng'] - 0.5),
-    zoom: 7
+    zoom: 7,
+    zoomControl: false,
+    mapTypeControl: false,
+    streetViewControl: false,
+    fullscreenControl: false
   });
   infoWindow = new google.maps.InfoWindow;
 
