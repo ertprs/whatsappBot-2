@@ -145,5 +145,36 @@ $action = mysqli_query($con,$qqq);
     }
 
 
+    /* Support checking.... */
+
+    $controllMsg = "SELECT * FROM `support_register` WHERE `actual_status` ='email' LIMIT 1";
+    $sendMsg = mysqli_query($con, $controllMsg);
+     $numRows = mysqli_num_rows($sendMsg);
+        if($numRows > 0) {
+        
+                $updateAlert = "UPDATE `support_register` SET `actual_status` = 'message to admin'";
+                $prepare = mysqli_query($con, $updateAlert);
+                    if($prepare) {
+                        while($msg = mysqli_fetch_array($sendMsg)) {
+                            $user_number = $msg['number'];
+                            $code_report = $msg['code_report'];
+                            $actual_status = $msg['actual_status'];
+            
+                            $text = "Attenzione 🚨\nVerificato il problema🔎:\ncode_report '".$code_report."'\nutente con il numero : '".$user_number."'\nactual_status: '".$actual_status."' ";
+                    }
+            }
+            
+            $data = array();
+            $child = array();
+
+                $child['msg'] = $text;    
+                $child['numero'] = '393278463663';
+
+                $data[] = $child;
+            
+            echo json_encode($data);
+        }
+
+
 
 ?>
