@@ -1,13 +1,16 @@
 <?php 
   session_start();
-   $get = $_GET['n'];
-  $nm1 = substr_replace($get, ' ',strlen($get) - 5);
-  $spazio = '';
-  $nm = $spazio.substr($nm1,2);
+  //  $get = $_GET['n'];
+  // $nm1 = substr_replace($get, ' ',strlen($get) - 5);
+  // $spazio = '';
+  // $nm = $spazio.substr($nm1,2);
  
-  $_SESSION['num'] = trim($nm);
+  // $_SESSION['num'] = trim($nm);
+  $_SESSION['num'];
   /* Generate key for report */
   $generete_key = substr($get, 9);
+
+
   
 
   ?>
@@ -113,7 +116,7 @@
               
             
             setTimeout(() => {
-                location.href= `https://testing3.volantinopiu.it/whatsapp/maps.php?n=39${current_number}`;  
+                location.href= `https://testing3.volantinopiu.it/whatsapp/mappa.php?`;  
             }, 2500);
               
           }

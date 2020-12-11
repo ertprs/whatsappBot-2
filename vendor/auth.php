@@ -1,10 +1,14 @@
 <?php
-   
    require '../bin/config.php';
    header('Access-Control-Allow-Origin: *');
-  
+   
+   session_start();
+   
+    $number = $_SESSION['num'];
+
     
-    if($_POST['id'] !="" && $_POST['number'] != "") {
+    
+    if($_POST['id'] !="" && $number != "") {
         function validate($data) {
             $data = trim($data);
             $data = stripcslashes($data);
@@ -13,9 +17,10 @@
         }
         validate($_POST);
 
-        $num = ($_POST['number']);
-        // $fn = '39';
-        // $num = $fn.$getNum;
+        // $num = ($_POST['number']);
+        $session_num = $number;
+        $_first = '39';
+        $num = $_first.$session_num;
         $Getid = $_POST['id'];
         $id = substr($Getid, 3);
        

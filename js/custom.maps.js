@@ -2,6 +2,8 @@
 /* google maps
 /* ==================================================================================== */
 
+
+
 function initMap() {
   $.getScript("js/markerclusterer.js");
 
@@ -158,6 +160,22 @@ function callback(response, status) {
       success: function(result) {
         var result = $.parseJSON(result);
         $("#jsres").html(result);
+
+        $('.checkbox').click(function() {
+            var current_id = $(this).attr('data-id');
+
+            $.ajax({
+              url: './vendor/auth.php',
+              type: 'post',
+              data : {
+                  id: current_id,
+                 
+              },
+              success: function() {
+                  console.log("Success");
+              }
+          });
+        });
       },
     });
   }

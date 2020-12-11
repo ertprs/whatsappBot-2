@@ -7,6 +7,7 @@ session_start();
  
   $_SESSION['num'] = trim($current_user_number);
   
+  
 
   ?>
 
