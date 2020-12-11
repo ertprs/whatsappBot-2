@@ -2,7 +2,10 @@
 
 require __DIR__.'/../bin/config2.php';
 
+session_start();
+
 $tipo = $_POST['tipo'];
+$numero = $_SESSION['num'];
 
 if ($tipo == 'pv') {
     $a_json = array();
@@ -84,6 +87,7 @@ if ($tipo == 'pv') {
           $toReturn .= '<a href="#"><img src="'.$logo.'" alt="" title="" /></a>';
           $toReturn .= '<div class="center"><h5>'.$address[$key]['nome'].'</h5>';
           $toReturn .= $address[$key]['address'].' </div>';
+          $toReturn .= '<div><input type="checkbox" /></div>';
           $toReturn .= '<div class="last">'.explode(' ', $address[$key]['text'])[0].' <span> '.explode(' ', $address[$key]['text'])[1].'</span> </div>';
         $toReturn .= '</li>';
     }
