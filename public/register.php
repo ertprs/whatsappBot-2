@@ -61,7 +61,7 @@
               <div class='title'>
                   <h6>Inserisci le informazioni e salva per selezionare i tuoi supermercati SISA preferiti</h6>
                   <smail>Hai problemi con registrazione?</smail>
-                  <a href="https://api.whatsapp.com/send?phone=+393294557479&text=Problemi con autorizzazione.Il codice report: F<?php echo $generete_key;?>">Clicca qua!</a>
+                  <a href="https://api.whatsapp.com/send?phone=+393294557479&text=Problemi con autorizzazione. Il codice report: F<?php echo $generete_key;?>">Clicca qua!</a>
               </div>
             <form id="registra_cluster">
               <label>Il tuo numero di telefono</label>

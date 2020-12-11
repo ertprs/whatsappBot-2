@@ -212,6 +212,10 @@ img {
     width: 90%;
   }
 
+  #sub_ {
+    display: none !important;
+  }
+
   .maps {
     width: 100% !important;
     position: absolute;

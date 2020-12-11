@@ -49,7 +49,8 @@ $_SESSION['status'] = '1';
 	<div id="mappa"></div>
 	<div class="mapsPv"> 
     <div class="btn_top"> <i class="far fa-chevron-up"></i> </div>
-    <ul id="jsres"> </ul> 
+    <ul id="jsres"> </ul>
+    <button id="sub_" class="btn btn-success w100">Salva</button>
   </div>
 
   <!-- font awesome -->
@@ -58,8 +59,26 @@ $_SESSION['status'] = '1';
 
 	<script src="js/custom.maps.js?v<?php echo date('mdYhisa', time()); ?>"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCw5RwNMRim53BW4IgTVWu-1nHZM26730A&callback=initMap"> </script>
-  
+  <script>
+    $('#sub_').on('click', function(e) {
+        e.preventDefault();
+          var current_session_number = '<?php echo "39".$_SESSION['num'] ?>'
+            $.ajax({
+                url: './vendor/submit.php',
+                type: 'post',
+                data: {
+                    number: current_session_number
+                },
+                success: function() {
+                    toastr.success('Iscrizione attiavata...', 'Successo');
+                    toastr.options.timeOut = 800;
+                }
+            })
+    });
+  </script>
 
 </body>
+  
+
 </html>
 
