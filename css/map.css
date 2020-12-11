@@ -212,7 +212,7 @@ img {
 .mapsPv ul li .center {
   flex: 1;
   padding: 0 10px;
-  font-size: 70%;
+  font-size: 80%;
 }
 
 .mapsPv h5 {
@@ -275,4 +275,36 @@ img {
     margin: auto;
     max-width: 40%;
   }
+
+  .mapsPv.in {
+    height: 80vh;
+  }
+
+  .mapsPv.out {
+    height: 16vh;
+  }
+
+  .mapsPv.in .btn_top {
+    display: none;
+  }  
+
+  .mapsPv.in .btn_bottom {
+    display: flex;
+  }  
+
+  .mapsPv.out .btn_top {
+    display: flex;
+  }  
+
+  .mapsPv.out .btn_bottom {
+    display: none;
+  } 
+
+  .mapsPv.in #jsres {
+    overflow-y: auto;
+  }  
+
+  .mapsPv.out #jsres {
+    overflow-y: hidden;
+  }  
 }
