@@ -1,16 +1,20 @@
 <?php 
 
     session_start();
-    /* Difine session */
    
-
+    /* Difine session */
     $get = $_GET['n'];
     $nm1 = substr_replace($get, ' ',strlen($get) - 5);
     $spazio = '';
     $nm = $spazio.substr($nm1,2);
 
     $_SESSION['num'] = trim($nm);
+   
+   
 
+
+
+   
     if(isset($_SESSION['num'])) {
         header("location: ../public/register.php");
     }
