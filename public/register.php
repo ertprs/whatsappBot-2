@@ -1,15 +1,20 @@
 <?php 
   session_start();
-  //  $get = $_GET['n'];
-  // $nm1 = substr_replace($get, ' ',strlen($get) - 5);
-  // $spazio = '';
-  // $nm = $spazio.substr($nm1,2);
- 
-  // $_SESSION['num'] = trim($nm);
-  $_SESSION['num'];
-  /* Generate key for report */
-  $generete_key = substr($get, 9);
+  require '../bin/config.php';
 
+  $_SESSION['num'];
+  $get = $_SESSION['num'];
+  /* Generate key for report */
+  $generete_key = substr($get, 7);
+  $number = '39'.$_SESSION['num'];
+
+
+  $select = "SELECT `numero`, `status` FROM `mobile` WHERE `numero` = '$number' AND `status` = '1' ";
+    $query = mysqli_query($con, $select);
+    $query_rows = mysqli_num_rows($query);
+      if($query_rows == 0) {
+        header("location: ../validation/validation.html");
+      }
 
   
 
@@ -55,7 +60,7 @@
           <div class="row">
               <div class='title'>
                   <h6>Inserisci le informazioni e salva per selezionare i tuoi supermercati SISA preferiti</h6>
-                  <smail>Hai problemi con autorizzazione?</smail>
+                  <smail>Hai problemi con registrazione?</smail>
                   <a href="https://api.whatsapp.com/send?phone=+393294557479&text=Problemi con autorizzazione.Il codice report: F<?php echo $generete_key;?>">Clicca qua!</a>
               </div>
             <form id="registra_cluster">
@@ -69,10 +74,10 @@
               <label>Cognome</label>
                 <input type="text" class="form-control" id="cognome" name="cognome" minlength= "3" required>    
                 <div class="terms" style="padding-top: 7px;">
-                  <input type="checkbox" name="terms" required  id="terms" >  I Agree Terms & Coditions
+                  <input type="checkbox" name="terms" required  id="terms" > Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 30 giugno 2003, n. 196 “Codice in materia di protezione dei dati personali” e dell’art. 13 del GDPR (Regolamento UE 2016/679).
                 </div>
                 <div class="btn-box">
-                  <input type="submit" value="SALVA"  class="btn btn-success w100" style="margin-top:30px; width:100%">
+                  <input type="submit" value="SALVA"  class="btn btn-success w100" style="margin-top:20px; width:100%">
                 </div>
             </form>
     

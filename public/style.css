@@ -29,7 +29,7 @@ section {
 #registra_cluster {
     margin: auto;
     width: 90%;
-    padding: 20px 0;
+    padding: 12px 0;
 }
 #registra_cluster label {
     color: #fff;
@@ -127,7 +127,7 @@ text-center {
     padding-left: 15px;
 }
 #home {
-    height: 200px;
+    height: 190px;
     width: 100%;
     
 }
@@ -214,13 +214,25 @@ text-center {
 
 #terms {
     padding-top: 7px;
+   
 }
+.terms {
+    font-size: 12px;
+    
+}
+
+.btn-box {
+    margin-bottom: 15px;
+}
+
+
+
 
 .title {
     text-align: center;
     width: 90%;
     margin: 0 auto;
-    padding-top: 20px;
+    padding-top: 12px;
 }
 
 .title h6 {
