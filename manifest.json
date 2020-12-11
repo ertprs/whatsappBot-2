@@ -1,0 +1,14 @@
+{
+  "name": "WhatsApp",
+  "short_name": "WA",
+  "description": " ",
+  "icons": [
+  {
+    "src": "img/logo.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }],
+  "display": "fullscreen",
+  "start_url": "/",
+  "orientation": "portrait"  
+}
