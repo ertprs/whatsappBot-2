@@ -17,6 +17,7 @@
    
     if(isset($_SESSION['num'])) {
         header("location: ../public/register.php");
+        exit();
     }
 
         /* Possible updating true */

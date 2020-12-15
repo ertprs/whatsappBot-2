@@ -83,6 +83,8 @@ if ($tipo == 'pv') {
 
         $logo = 'img/logo.png';
 
+
+        
         $toReturn .= '<li class="marker-link" data-markerid="'.$address[$key]['id'].'" data-lat="'.$address[$key]['Latitude'].'" data-lon="'.$address[$key]['Longitude'].'">';
           $toReturn .= '<a href="#"><img src="'.$logo.'" alt="" title="" /></a>';
           $toReturn .= '<div class="center"><h5>'.$address[$key]['nome'].'</h5>';

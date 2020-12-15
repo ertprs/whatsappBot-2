@@ -74,8 +74,10 @@
               <label>Cognome</label>
                 <input type="text" class="form-control" id="cognome" name="cognome" minlength= "3" required>    
                 <div class="terms" style="padding-top: 7px;">
-                  <input type="checkbox" name="terms" required  id="terms" > Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 30 giugno 2003, n. 196 “Codice in materia di protezione dei dati personali” e dell’art. 13 del GDPR (Regolamento UE 2016/679).
+                  <input type="checkbox" name="terms" required  id="terms" > * ho preso visione dell’informativa privacy ai sensi dell’art.13 del Reg. UE 2016/679 e autorizzo al trattamento dei dati personali
                 </div>
+               
+                <!-- Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 30 giugno 2003, n. 196 “Codice in materia di protezione dei dati personali” e dell’art. 13 del GDPR (Regolamento UE 2016/679). -->
                 <div class="btn-box">
                   <input type="submit" value="SALVA"  class="btn btn-success w100" style="margin-top:20px; width:100%">
                 </div>

@@ -1,11 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
 
+
+
+
 body {
   background-color: #fff;
   color: #646a70;
   font: normal 400 1.4rem / 1.8 "Muli", sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  
+
 }
 
 .popupPv h5 {
@@ -145,9 +150,14 @@ img {
     width: 90%;
   }
 
-  #sub_ {
+  /* #sub_ {
     display: none !important;
+  } */
+
+  #sub_ {
+    display: none;
   }
+
 
   .maps {
     width: 100% !important;
@@ -264,7 +274,7 @@ img {
   }
 
   .mapsPv ul li {
-    font-size: 50%;
+    font-size: 65%;
   }
 
   .btn_top {

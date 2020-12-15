@@ -19,6 +19,9 @@ $query_rows = mysqli_num_rows($query);
 
 $_SESSION['status'] = '1';
 
+
+
+// $_SERVER['REMOTE_ADDR'];
  
 
 ?>
@@ -28,7 +31,9 @@ $_SESSION['status'] = '1';
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/map.css?v<?php echo date('mdYhisa', time()); ?>">
@@ -54,6 +59,7 @@ $_SESSION['status'] = '1';
 	<div class="mapsPv"> 
    
     <div class="btn_top text-center"> <i class="far fa-chevron-up"></i> </div>
+    
     <div class="btn_bottom text-center"> <i class="far fa-chevron-down"></i> </div>
     <ul id="jsres"> </ul>
     <button id="sub_" class="btn btn-success w100">Salva</button> 
@@ -69,6 +75,14 @@ $_SESSION['status'] = '1';
   <script>
     $('#sub_').on('click', function(e) {
         e.preventDefault();
+
+        // $(".mapsPv").removeClass('in');
+        // $(".mapsPv").addClass('out');
+        // $("#sub_").css("display", "none");
+        $('#jsres').animate({
+            scrollTop: ($('.marker-link').first().offset().top)
+          },700);
+
           var current_session_number = '<?php echo "39".$_SESSION['num'] ?>'
             $.ajax({
                 url: './vendor/submit.php',
@@ -79,6 +93,13 @@ $_SESSION['status'] = '1';
                 success: function() {
                     toastr.success('Iscrizione attiavata...', 'Successo');
                     toastr.options.timeOut = 800;
+                    // $.ajax({
+                    //   url: './vendor/test.php',
+                    //   type: 'post',
+                    //   data: {
+                    //     number : current_session_number,
+                    //   }
+                    // })
                 }
             })
     });
