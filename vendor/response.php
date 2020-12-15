@@ -57,6 +57,7 @@ $action = mysqli_query($con,$qqq);
          
  }
 
+ /* Reset data only 24h */
 
  $todayLong = date("Y-m-d H:i:s");
 
