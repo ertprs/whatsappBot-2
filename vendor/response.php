@@ -113,46 +113,6 @@ $action = mysqli_query($con,$qqq);
                  }
 
               
-                 
-
-
-
-                // if($_region) {
-                   
-                //     $updateReg = "UPDATE `usr_msg` SET `status` = '0' WHERE `regions` = '$_region' AND `usr_number` = '$num' ";
-                //     $excY = mysqli_query($con, $updateReg) or die("Not updayting...");
-                //         if($excY) {
-                           
-                            
-                //         }
-                        
-                // }
-                // print_r($_region);
-               
-                // if(($_region == 'Sisa Campania') && ($_region == 'Sisa Puglia') && ($_region == 'Negozio Italia')) {
-                    
-                //     $text = "Complimenti , notifiche attivate!.\n\nPotrai disattivare le notifiche in qualsiasi momento inviando STOP.\n\nDa ora in poi Riceverai in anteprima i volantini dei tuoi supermercati Sisa preferiti.\nTi ricordiamo che potrai in qualsiasi momento aggiungere, modificare la scelta dei punti di vendita da abbinare alle notifiche cliccando il seguente link\n\nhttps://testing3.volantinopiu.it/whatsapp/controller/redirection.php?n=$num@c.us\n\nDi seguito i volantini attivi per i punti vendita da te selezionati:\n\nSisa Puglia:\n https://preview1.volantinopiu.it//volantino326100-Sisa.html\n\nSisa Campania:\nhttps://preview1.volantinopiu.it//volantino237100-SisaCampania_Marca2020.html \n\nNegozio Italia:\nhttps://preview1.volantinopiu.it//promo32610202003-ma.html";
-                // }
-                // if(!empty($_region == 'Sisa Campania') && !empty($_region == 'Sisa Puglia')) {
-                //     $text = "Complimenti , notifiche attivate!.\n\nPotrai disattivare le notifiche in qualsiasi momento inviando STOP.\n\nDa ora in poi Riceverai in anteprima i volantini dei tuoi supermercati Sisa preferiti.\nTi ricordiamo che potrai in qualsiasi momento aggiungere, modificare la scelta dei punti di vendita da abbinare alle notifiche cliccando il seguente link\n\nhttps://testing3.volantinopiu.it/whatsapp/controller/redirection.php?n=$num@c.us\n\nDi seguito i volantini attivi per i punti vendita da te selezionati:\n\nSisa Puglia:\n https://preview1.volantinopiu.it//volantino326100-Sisa.html\n\nSisa Campania:\nhttps://preview1.volantinopiu.it//volantino237100-SisaCampania_Marca2020.html";
-                        
-                // } 
-                // if(!empty($_region == 'Sisa Campania') && !empty($_region == 'Negozio Italia')) {
-                //     $text = "Complimenti , notifiche attivate!.\n\nPotrai disattivare le notifiche in qualsiasi momento inviando STOP.\n\nDa ora in poi Riceverai in anteprima i volantini dei tuoi supermercati Sisa preferiti.\nTi ricordiamo che potrai in qualsiasi momento aggiungere, modificare la scelta dei punti di vendita da abbinare alle notifiche cliccando il seguente link\n\nhttps://testing3.volantinopiu.it/whatsapp/controller/redirection.php?n=$num@c.us\n\nDi seguito i volantini attivi per i punti vendita da te selezionati:\n\nNegozio Italia:\n https://preview1.volantinopiu.it//promo32610202003-ma.html\n\nSisa Campania:\nhttps://preview1.volantinopiu.it//volantino237100-SisaCampania_Marca2020.html";
-                // } 
-                //  if(!empty($_region == 'Sisa Puglia') && !empty($_region == 'Negozio Italia')) {
-                //     $text = "Complimenti , notifiche attivate!.\n\nPotrai disattivare le notifiche in qualsiasi momento inviando STOP.\n\nDa ora in poi Riceverai in anteprima i volantini dei tuoi supermercati Sisa preferiti.\nTi ricordiamo che potrai in qualsiasi momento aggiungere, modificare la scelta dei punti di vendita da abbinare alle notifiche cliccando il seguente link\n\nhttps://testing3.volantinopiu.it/whatsapp/controller/redirection.php?n=$num@c.us\n\nDi seguito i volantini attivi per i punti vendita da te selezionati:\n\nSisa Puglia:\n https://preview1.volantinopiu.it//volantino326100-Sisa.html\n\nSisa Negozio Italia:\nhttps://preview1.volantinopiu.it//promo32610202003-ma.html";
-                // } 
-                //  if(!empty($_region == 'Sisa Campania')) {
-                //     $text = "Complimenti , notifiche attivate!.\n\nPotrai disattivare le notifiche in qualsiasi momento inviando STOP.\n\nDa ora in poi Riceverai in anteprima i volantini dei tuoi supermercati Sisa preferiti.\nTi ricordiamo che potrai in qualsiasi momento aggiungere, modificare la scelta dei punti di vendita da abbinare alle notifiche cliccando il seguente link\n\nhttps://testing3.volantinopiu.it/whatsapp/controller/redirection.php?n=$num@c.us\n\nDi seguito i volantini attivi per i punti vendita da te selezionati:\n\nSisa Campania:\nhttps://preview1.volantinopiu.it//volantino237100-SisaCampania_Marca2020.html";
-                // } 
-                // if(($_region == 'Sisa Puglia')) {
-                //     $text = "Complimenti , notifiche attivate!.\n\nPotrai disattivare le notifiche in qualsiasi momento inviando STOP.\n\nDa ora in poi Riceverai in anteprima i volantini dei tuoi supermercati Sisa preferiti.\nTi ricordiamo che potrai in qualsiasi momento aggiungere, modificare la scelta dei punti di vendita da abbinare alle notifiche cliccando il seguente link\n\nhttps://testing3.volantinopiu.it/whatsapp/controller/redirection.php?n=$num@c.us\n\nDi seguito i volantini attivi per i punti vendita da te selezionati:\n\nSisa Puglia:\nhttps://preview1.volantinopiu.it//volantino326100-Sisa.html";
-                // }
-                //  if(!empty($_region == 'Negozio Italia')) {
-                //     $text = "Complimenti , notifiche attivate!.\n\nPotrai disattivare le notifiche in qualsiasi momento inviando STOP.\n\nDa ora in poi Riceverai in anteprima i volantini dei tuoi supermercati Sisa preferiti.\nTi ricordiamo che potrai in qualsiasi momento aggiungere, modificare la scelta dei punti di vendita da abbinare alle notifiche cliccando il seguente link\n\nhttps://testing3.volantinopiu.it/whatsapp/controller/redirection.php?n=$num@c.us\n\nDi seguito i volantini attivi per i punti vendita da te selezionati:\n\nNegozio Italia :\nhttps://preview1.volantinopiu.it//promo32610202003-ma.html";
-                // }
-
                
             }
                
@@ -177,6 +137,7 @@ $action = mysqli_query($con,$qqq);
     $controllMsg = "SELECT * FROM `support_register` WHERE `actual_status` ='email' LIMIT 1";
     $sendMsg = mysqli_query($con, $controllMsg);
      $numRows = mysqli_num_rows($sendMsg);
+     $child = array();
         if($numRows > 0) {
         
                 $updateAlert = "UPDATE `support_register` SET `actual_status` = 'message to admin'";
@@ -188,20 +149,46 @@ $action = mysqli_query($con,$qqq);
                             $actual_status = $msg['actual_status'];
             
                             $text = "Attenzione 🚨\nVerificato il problema🔎:\ncode_report '".$code_report."'\nutente con il numero : '".$user_number."'\nactual_status: '".$actual_status."' ";
+                            $child['msg'][] = $text; 
                     }
             }
             
-            $data = array();
-            $child = array();
-
-                $child['msg'] = $text;    
+          
                 $child['numero'] = '393278463663';
 
-                $data[] = $child;
+               
             
-            echo json_encode($data);
+            echo json_encode($child);
         }
 
+
+
+        /* Checking banned user... */
+        $controlBan = "SELECT * FROM `banned_user` WHERE `status` = 'bann'";
+        $excBan = mysqli_query($con, $controlBan) or die("Not get..");
+        $banSQLROWS = mysqli_num_rows($excBan);
+        $child = array();
+       
+        if($banSQLROWS > 0) {
+            while($ban = mysqli_fetch_array($excBan)) {
+                $number = $ban['user_number'];
+                $ip = $ban['ip_address'];
+                $data = $ban["time"];
+                $child['msg'][] = "Ban List❗\nData: $data\nNumero 📱: $number\nIp_address 🖥️: $ip";
+                
+            }
+                $banUpdate = "UPDATE `banned_user` SET `status` = 'avviso'";
+                $excupdateBan = mysqli_query($con, $banUpdate);
+                if($excupdateBan) {
+                    $child['numero'] = '393278463663';
+                    echo json_encode($child);    
+                }
+    
+    
+        }
+
+        
+        
 
 
 ?>

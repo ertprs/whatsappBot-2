@@ -93,13 +93,7 @@ $_SESSION['status'] = '1';
                 success: function() {
                     toastr.success('Iscrizione attiavata...', 'Successo');
                     toastr.options.timeOut = 800;
-                    // $.ajax({
-                    //   url: './vendor/test.php',
-                    //   type: 'post',
-                    //   data: {
-                    //     number : current_session_number,
-                    //   }
-                    // })
+                    
                 }
             })
     });
