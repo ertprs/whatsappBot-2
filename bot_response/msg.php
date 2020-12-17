@@ -39,7 +39,7 @@ while($row = mysqli_fetch_array($query)) {
 
 /* Update status message */
 $statusMSG = "UPDATE `usr_msg` SET `status` = '0' WHERE `usr_number` = '$number'";
-$excuteMSG = mysqli_query($conn, $statusMSG) or die("Attention. Something is wrong...");
+$excuteMSG = mysqli_query($con, $statusMSG) or die("Attention. Something is wrong...");
 
 
 
