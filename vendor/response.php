@@ -83,6 +83,8 @@ $action = mysqli_query($con,$qqq);
 
     $sql = "SELECT DISTINCT `numero`, `msgFromPv` FROM `user_pv` WHERE `numero` !='' AND `msgFromPv` = 'true'";
     $query = mysqli_query($con, $sql);
+    $selectRows = mysqli_num_rows($query);
+    if($selectRows > 0) { 
     while($row = mysqli_fetch_array($query)) {
         
         $msgFromPv = $row['msgFromPv'];
@@ -118,17 +120,19 @@ $action = mysqli_query($con,$qqq);
                
 
                    
-                $child['numero'] = $num;
-            
-            echo json_encode($child);
-
+           
 
 
                 
             } else {
                 exit();
             }
-          
+
+            $child['numero'] = $num;
+            echo json_encode($child);
+
+
+        }
     }
 
 
