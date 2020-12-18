@@ -119,7 +119,8 @@ $action = mysqli_query($con,$qqq);
             }
                
 
-                   
+                        $child['numero'] = $num;
+                        echo json_encode($child);
            
 
 
@@ -128,8 +129,7 @@ $action = mysqli_query($con,$qqq);
                 exit();
             }
 
-            $child['numero'] = $num;
-            echo json_encode($child);
+            
 
 
         }
@@ -188,7 +188,7 @@ $action = mysqli_query($con,$qqq);
                     echo json_encode($child);    
                 }
     
-    
+                
         }
 
         
