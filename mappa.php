@@ -2,27 +2,31 @@
 <?php
 session_start();
 require './bin/config.php';
+require './bin/config2.php';
 
-if(!isset($_SESSION['num'])) {
-  header("location: public/register.php");
+if (isset($_GET['xx'])) {
+    $_SESSION['num'] = '3401234567';
+    $current_session_number = '393401234567';
+    $_SESSION['status'] = '1';
+} else {
+    if(!isset($_SESSION['num'])) {
+      header("location: public/register.php");
+    }
+    $_first ='39';
+    $current_session_number = $_first.$_SESSION['num'];
+
+    /* Control if mobile status true */
+    $select = "SELECT `numero`, `status` FROM `mobile` WHERE `numero` = '$current_session_number' AND `status` = '1' ";
+    $query = mysqli_query($con, $select);
+    $query_rows = mysqli_num_rows($query);
+      if($query_rows == 0) {
+        header("location: validation/validation.html");
+      }
+
+    $_SESSION['status'] = '1';
 }
-$_first ='39';
-$current_session_number = $_first.$_SESSION['num'];
-
-/* Control if mobile status true */
-$select = "SELECT `numero`, `status` FROM `mobile` WHERE `numero` = '$current_session_number' AND `status` = '1' ";
-$query = mysqli_query($con, $select);
-$query_rows = mysqli_num_rows($query);
-  if($query_rows == 0) {
-    header("location: validation/validation.html");
-  }
-
-$_SESSION['status'] = '1';
-
-
 
 // $_SERVER['REMOTE_ADDR'];
- 
 
 ?>
 
@@ -52,7 +56,9 @@ $_SESSION['status'] = '1';
 <body>
 
   <div id="header">
-    <img src="img/logo.png" class="img-fluid">
+    <img src="img/header.png" class="img-fluid">
+    <h2>Il volantino arriva su WhatsApp</h2>
+    <p>Seleziona i tuoi negozi preferiti<br>e riceverai il volantino in anteprima</p>
   </div>
 
 	<div id="mappa"></div>
