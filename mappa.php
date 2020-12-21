@@ -4,16 +4,21 @@ session_start();
 require './bin/config.php';
 require './bin/config2.php';
 
-if (isset($_GET['xx'])) {
-    $_SESSION['num'] = '3401234567';
-    $current_session_number = '393401234567';
-    $_SESSION['status'] = '1';
-} else {
-    if(!isset($_SESSION['num'])) {
-      header("location: public/register.php");
-    }
-    $_first ='39';
-    $current_session_number = $_first.$_SESSION['num'];
+// if (isset($_GET['xx'])) {
+//     $_SESSION['num'] = '3401234567';
+//     $current_session_number = '393401234567';
+//     $_SESSION['status'] = '1';
+// } else {
+//     if(!isset($_SESSION['num'])) {
+//       header("location: public/register.php");
+//     }
+//     $_first ='39';
+//     $current_session_number = $_first.$_SESSION['num'];
+
+/* Rafactoring new template-- */
+    $whatsapp_number= $_GET['n'];
+    $_SESSION['num'] = $whatsapp_number;
+    $current_session_number = $_SESSION['num'];
 
     /* Control if mobile status true */
     $select = "SELECT `numero`, `status` FROM `mobile` WHERE `numero` = '$current_session_number' AND `status` = '1' ";
@@ -24,7 +29,7 @@ if (isset($_GET['xx'])) {
       }
 
     $_SESSION['status'] = '1';
-}
+
 
 // $_SERVER['REMOTE_ADDR'];
 
