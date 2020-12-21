@@ -1,16 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
 
-
-
-
 body {
   background-color: #fff;
   color: #646a70;
   font: normal 400 1.4rem / 1.8 "Muli", sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  
-
 }
 
 .popupPv h5 {
@@ -185,6 +180,7 @@ img {
 #mappa {
   height: 100vh;
   width: 100vw;
+  display: none;
 }
 
 .mapsPv {
@@ -254,7 +250,23 @@ img {
   box-shadow: 0 4px 2px -2px grey;
   z-index: 1;
   position: absolute;
-  background-color: #fff;
+  color: #fff;
+  background-color: #3fa535;
+  padding: .3rem 1rem;
+  font-family: "Muli";
+  text-align: center;
+}
+
+#header h2 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding-top: .2rem;
+}
+
+#header p {
+  line-height: 1.6rem;
+  font-size: 1rem;
+  margin-bottom: 0;
 }
 
 @media screen and (orientation:portrait) {
@@ -287,7 +299,6 @@ img {
 
   #header img {
     margin: auto;
-    max-width: 40%;
   }
 
   .mapsPv.in {
@@ -300,25 +311,25 @@ img {
 
   .mapsPv.in .btn_top {
     display: none;
-  }  
+  }
 
   .mapsPv.in .btn_bottom {
     display: flex;
-  }  
+  }
 
   .mapsPv.out .btn_top {
     display: flex;
-  }  
+  }
 
   .mapsPv.out .btn_bottom {
     display: none;
-  } 
+  }
 
   .mapsPv.in #jsres {
     overflow-y: auto;
-  }  
+  }
 
   .mapsPv.out #jsres {
     overflow-y: hidden;
-  }  
+  }
 }
