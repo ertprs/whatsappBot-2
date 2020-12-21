@@ -135,8 +135,10 @@ $result = mysqli_query($con, $query);
 
                 
                 
-                echo "Il seguente numero $showNum,\nrisulta già registrato,\r\nper aggiungere/modificare i tuoi negozi preferiti puoi cliccare il seguente link:\r\n https://testing3.volantinopiu.it/whatsappBot/controller/redirection.php?n=$userNum@c.us";
+                // echo "Il seguente numero $showNum,\nrisulta già registrato,\r\nper aggiungere/modificare i tuoi negozi preferiti puoi cliccare il seguente link:\r\n https://testing3.volantinopiu.it/whatsappBot/controller/redirection.php?n=$userNum@c.us";
                 
+                echo "Il seguente numero $showNum,\nrisulta già registrato,\r\nper aggiungere/modificare i tuoi negozi preferiti puoi cliccare il seguente link:\r\n https://testing3.volantinopiu.it/whatsappBot/mappa.php?n=$userNum@c.us";
+
                 $RsLog = "INSERT INTO `mobile_log`(`id`, `numero`, `data_logo`,`action`,`msg`,ip_address) VALUES (NULL,'$userNum',NULL, 'esiste già','$userMsg', '$global_ip')";
                 $injectLogRs = mysqli_query($con, $RsLog);
                 
