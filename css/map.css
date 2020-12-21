@@ -228,7 +228,7 @@ img {
 .mapsPv ul li .center {
   flex: 1;
   padding: 0 0.3rem;
-  font-size: 60%;
+  font-size: 80%;
   max-width: 80%;
   white-space: nowrap;
   overflow: hidden;
@@ -247,7 +247,7 @@ img {
 
 .mapsPv h5 {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.3rem;
   padding: 0.2rem 0;
   margin: 0;
 }
@@ -266,7 +266,7 @@ img {
   font-weight: bold;
   color: red;
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 #header {
