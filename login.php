@@ -4,6 +4,7 @@
 
    /* Controll if im going from from auth.php or from getData.php*/
 /* Get data length == 17 */
+
    if(strlen($get) == 17) {
       $nm1 = substr_replace($get, ' ',strlen($get) - 5);
       $spazio = '';
