@@ -56,35 +56,35 @@ if($userMsg == 'reset') {
 
     /* Support area.. */
     
-    $_pattern = "codice report";
-    if(strpos($userMsg, $_pattern ) !== false ) {
-        $support = "SELECT `time_stamp`, `code_report`, `number` FROM `support_register` WHERE `number` = '$userNum'";
-        $control = mysqli_query($con, $support);
-        $rowsCount = mysqli_num_rows($control);
+    // $_pattern = "codice report";
+    // if(strpos($userMsg, $_pattern ) !== false ) {
+    //     $support = "SELECT `time_stamp`, `code_report`, `number` FROM `support_register` WHERE `number` = '$userNum'";
+    //     $control = mysqli_query($con, $support);
+    //     $rowsCount = mysqli_num_rows($control);
            
          
-                    if($rowsCount > 0) {
+    //                 if($rowsCount > 0) {
                         
-                        $updateStatus = "UPDATE `support_register` SET `actual_status` ='email' WHERE `number`= '$userNum'";
-                        $getUpdate = mysqli_query($con, $updateStatus) or die("Status was not updayted...");
-                        if($getUpdate) {
-                            echo "Buonasera\nChiediamo scusa per il disagio.\nVi contattiamo a breve\nPer avere maggiori informazioni\npreghiamo di contattare noi\nsu questa email: \n\nsupportvolantinopiu@gmail.com\n\nCoridali saluti,\nVolantino support team";
-                        }
+    //                     $updateStatus = "UPDATE `support_register` SET `actual_status` ='email' WHERE `number`= '$userNum'";
+    //                     $getUpdate = mysqli_query($con, $updateStatus) or die("Status was not updayted...");
+    //                     if($getUpdate) {
+    //                         echo "Buonasera\nChiediamo scusa per il disagio.\nVi contattiamo a breve\nPer avere maggiori informazioni\npreghiamo di contattare noi\nsu questa email: \n\nsupportvolantinopiu@gmail.com\n\nCoridali saluti,\nVolantino support team";
+    //                     }
                             
-                    }else {
-                        $insertSupport = "INSERT INTO `support_register` (`id`, `number`, `code_report`, `actual_status`, `time_stamp`) VALUES(NULL, '$userNum', 'PA', 'messaggio', NULL)";
-                        $querySupport = mysqli_query($con, $insertSupport) or die("Insert error.. support not passed..");
-                            if($querySupport) {
-                                $deleteSup = "DELETE FROM `mobile` WHERE `numero` = '$userNum'";
-                                $execDelete = mysqli_query($con, $deleteSup) or die("Cant delete from mobile");   
-                                echo "Buonasera\nReport e stato inviato 📧\nScrivi (ok) per continuare registrazione📀";
+    //                 }else {
+    //                     $insertSupport = "INSERT INTO `support_register` (`id`, `number`, `code_report`, `actual_status`, `time_stamp`) VALUES(NULL, '$userNum', 'PA', 'messaggio', NULL)";
+    //                     $querySupport = mysqli_query($con, $insertSupport) or die("Insert error.. support not passed..");
+    //                         if($querySupport) {
+    //                             $deleteSup = "DELETE FROM `mobile` WHERE `numero` = '$userNum'";
+    //                             $execDelete = mysqli_query($con, $deleteSup) or die("Cant delete from mobile");   
+    //                             echo "Buonasera\nReport e stato inviato 📧\nScrivi (ok) per continuare registrazione📀";
     
-                            }
+    //                         }
 
                           
-                    }
+    //                 }
 
-    }
+    // }
 
 
 
@@ -135,7 +135,7 @@ $result = mysqli_query($con, $query);
 
                 
                 
-                echo "Il seguente numero $showNum,\nrisulta già registrato,\r\nper aggiungere/modificare i tuoi negozi preferiti puoi cliccare il seguente link:\r\n https://testing3.volantinopiu.it/whatsapp/controller/redirection.php?n=$userNum@c.us";
+                echo "Il seguente numero $showNum,\nrisulta già registrato,\r\nper aggiungere/modificare i tuoi negozi preferiti puoi cliccare il seguente link:\r\n https://testing3.volantinopiu.it/whatsappBot/controller/redirection.php?n=$userNum@c.us";
                 
                 $RsLog = "INSERT INTO `mobile_log`(`id`, `numero`, `data_logo`,`action`,`msg`,ip_address) VALUES (NULL,'$userNum',NULL, 'esiste già','$userMsg', '$global_ip')";
                 $injectLogRs = mysqli_query($con, $RsLog);
@@ -202,9 +202,11 @@ $result = mysqli_query($con, $query);
             $dataString = substr($data, 11, -6);
             $dataInt = (int)$dataString;
                 if($dataInt > 14) {
-                    echo "Buonasera,\nIscrizione attiva ✅\nper scegliere i tuoi supermercati Sisa preferiti, clicca il seguente link :\n https://testing3.volantinopiu.it/whatsapp/controller/redirection.php?n=$userNum@c.us";
+                    // echo "Buonasera,\nIscrizione attiva ✅\nper scegliere i tuoi supermercati Sisa preferiti, clicca il seguente link :\n https://testing3.volantinopiu.it/whatsapp/controller/redirection.php?n=$userNum@c.us";
+                    echo "Buonasera,\nIscrizione attiva ✅\nper scegliere i tuoi supermercati Sisa preferiti, clicca il seguente link :\n https://testing3.volantinopiu.it/whatsappBot/mappa.php?n=$userNum@c.us";
                 }else if($dataInt < 14) {
-                    echo "Buongiorno,\nIscrizione attiva ✅\nper scegliere i tuoi supermercati Sisa preferiti, clicca il seguente link :\n https://testing3.volantinopiu.it/whatsapp/controller/redirection.php?n=$userNum@c.us";
+                    // echo "Buongiorno,\nIscrizione attiva ✅\nper scegliere i tuoi supermercati Sisa preferiti, clicca il seguente link :\n https://testing3.volantinopiu.it/whatsapp/controller/redirection.php?n=$userNum@c.us";
+                    echo "Buonasera,\nIscrizione attiva ✅\nper scegliere i tuoi supermercati Sisa preferiti, clicca il seguente link :\n https://testing3.volantinopiu.it/whatsappBot/mappa.php?n=$userNum@c.us";
                 }
         }
 
