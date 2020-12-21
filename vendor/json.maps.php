@@ -49,7 +49,8 @@ if ($tipo == 'pv') {
                 Telefono,
                 Lat AS Latitude,
                 Lon AS Longitude,
-                IdPuntoVendita AS id
+                IdPuntoVendita AS id,
+                regione
               FROM puntivendita e
 
               WHERE 1
@@ -65,6 +66,7 @@ if ($tipo == 'pv') {
           'Latitude' => $f['Latitude'],
           'Longitude' => $f['Longitude'],
           'nome' => $f['Location'],
+          'regione' => $f['regione'],
           'id' => $f['id'],
           'telefono' => $f['Telefono'],
           'text' => $results[$n]['distance']['text'],
@@ -78,20 +80,46 @@ if ($tipo == 'pv') {
         return $a['value'] <=> $b['value'];
     });
 
+    $n = 0;
     foreach ($address as $key => $val) {
         /**/
 
-        $logo = 'img/logo.png';
+        if ($n > 2) {
+          break;
+        }
 
+        switch ($val['regione']) {
+            case 'Negozio Italia':
+                $logo = 'https://www.disisacentrosud.it/images/volantinoNG/volantino-sisa-NG.png';
+                break;
+            case 'Sisa Puglia':
+                $logo = 'https://www.disisacentrosud.it/images/volantinoPuglia/volantino-sisa-puglia.png';
+                break;
+            default:
+                $logo = 'https://www.disisacentrosud.it/images/volantinoCampania/volantino-sisa-campania.png';
+                break;
+        }
 
+        $n++;
         
-        $toReturn .= '<li class="marker-link" data-markerid="'.$address[$key]['id'].'" data-lat="'.$address[$key]['Latitude'].'" data-lon="'.$address[$key]['Longitude'].'">';
-          $toReturn .= '<a href="#"><img src="'.$logo.'" alt="" title="" /></a>';
-          $toReturn .= '<div class="center"><h5>'.$address[$key]['nome'].'</h5>';
-          $toReturn .= $address[$key]['address'].' </div>';
-          $toReturn .= '<div class="check_box"><input type="checkbox" class="checkbox" data-id="pv_'.$address[$key]['id'].'"/></div>';
-          $toReturn .= '<div class="last">'.explode(' ', $address[$key]['text'])[0].' <span> '.explode(' ', $address[$key]['text'])[1].'</span> </div>';
-        $toReturn .= '</li>';
+        $toReturn .= 
+            '<li class="marker-link" data-markerid="'.$val['id'].'" data-lat="'.$val['Latitude'].'" data-lon="'.$val['Longitude'].'">
+              
+              <a href="#"><img src="'.$logo.'" alt="" title="" /></a>
+
+              <div class="center">
+                <span> ' . $val['text'] . ' </span>
+                <h4>'.strtoupper($val['regione']).'</h4>
+                <h5>'.strtoupper($val['nome']).'</h5>
+                '.ucwords(strtolower($val['address'])).' 
+              </div>
+            
+              <div class="last">
+                <div class="check_box"><input type="checkbox" class="checkbox" data-id="pv_'.$val['id'].'"/></div>
+                <span> ABBINA </span> 
+              </div>
+
+            </li>';
     }
 
     echo json_encode($toReturn, JSON_PRETTY_PRINT);
