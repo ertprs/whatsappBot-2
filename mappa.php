@@ -64,12 +64,12 @@ if (isset($_GET['xx'])) {
 	<div id="mappa"></div>
 	<div class="mapsPv"> 
    
-    <div class="btn_top text-center"> <i class="far fa-chevron-up"></i> </div>
+    <!--div class="btn_top text-center"> <i class="far fa-chevron-up"></i> </div-->
     
-    <div class="btn_bottom text-center"> <i class="far fa-chevron-down"></i> </div>
+    <!--div class="btn_bottom text-center"> <i class="far fa-chevron-down"></i> </div-->
     <ul id="jsres"> </ul>
-    <button id="sub_" class="btn btn-success w100">Salva</button> 
   </div>
+  <button id="sub_" class="btn btn-success w100">SALVA NEGOZI</button> 
 
   <!-- font awesome -->
   <script src="https://kit.fontawesome.com/4ad3211947.js" crossorigin="anonymous"></script>
