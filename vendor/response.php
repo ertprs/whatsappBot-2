@@ -5,8 +5,51 @@ header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type,Accept");
 
+/* TODO: LIMIT sending message for the same category */
+
+// $getStatus  = "SELECT DISTINCT `numero`, `regioni` FROM `user_pv` WHERE `status` = '2'";
+// $excStatus = mysqli_query($con, $getStatus);
+// $countRows = mysqli_num_rows($excStatus);
+//     if($countRows > 0) {
+//         while($msg = mysqli_fetch_array($excStatus)) {
+//             $usr_number = $msg['numero'];
+//             $usr_region = $msg['regioni'];
+
+//             $recivedMsg = "SELECT DISTINCT `regione` FROM `user_send` WHERE `numero` ='$usr_number'";
+//             $excMsg = mysqli_query($con, $recivedMsg);
+//             $regionRows = mysqli_num_rows($excMsg);
+//                 if($regionRows > 0) {                                 
+//                     while($lock = mysqli_fetch_array($excMsg)) {
+//                         $_regionLock = $lock['regione'];
+
+//                         $up = "UPDATE `user_pv` SET `status` ='3' WHERE `numero`= '$usr_number' AND `regioni` ='$_regionLock' ";
+//                         $end = mysqli_query($con, $up);
+//                             // switch($_regionLock) {
+//                             //     case 'Sisa Campania' :
+//                             //         $up = "UPDATE `user_pv` SET `status` ='3' WHERE `numero`= '$usr_number' AND `regioni` ='$_regionLock' ";
+//                             //         $end = mysqli_query($con, $up);
+//                             //         break;
+//                             //     case 'Sisa Puglia' :
+//                             //         $up = "UPDATE `user_pv` SET `status` ='3' WHERE `numero`= '$usr_number' AND `regioni` ='$_regionLock' ";
+//                             //         $end = mysqli_query($con, $up);
+//                             //         break;
+//                             //     case 'Negozio Italia' :
+//                             //         $up = "UPDATE `user_pv` SET `status` ='3' WHERE `numero`= '$usr_number' AND `regioni` ='$_regionLock' ";
+//                             //         $end = mysqli_query($con, $up);
+//                             //         break;
+//                             // }
+                
+//                 }        
+            
+//             }
 
 
+//         }
+
+//     }
+
+
+    /* Old version */
 // $qqq = "SELECT DISTINCT `id_pv`, `numero`, `time_stamp` FROM `user_pv`";
 // $action = mysqli_query($con,$qqq);
 //  while($rw = mysqli_fetch_array($action)) {
@@ -33,17 +76,6 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type,Acc
 //                     $regLine = $lines['regione'];
                     
 
-                   
-//                 //         if($regLine == 'Sisa Campania') {
-//                 //             $upgrade = "UPDATE `user_pv` SET `msgFromPv` = 'false' WHERE numero = '$num' AND `id_pv` = '$iDP'";
-//                 //             $exc = mysqli_query($con, $upgrade);
-//                 //         }else if($regLine == 'Sisa Puglia') {
-//                 //             $upgrade = "UPDATE `user_pv` SET `msgFromPv` = 'false' WHERE numero = '$num' AND `id_pv` = '$iDP' ";
-//                 //             $exc = mysqli_query($con, $upgrade);
-//                 //         }else if($regLine == 'Negozio Italia') {
-//                 //             $upgrade = "UPDATE `user_pv` SET `msgFromPv` = 'false' WHERE numero = '$num' AND `id_pv` = '$iDP' ";
-//                 //             $exc = mysqli_query($con, $upgrade);
-//                 //         }    
 
 //                 switch($regline) {
 //                     case 'Sisa Campania' :
@@ -72,6 +104,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type,Acc
 //         }       
          
 //  }
+/* End old version */
 
 
  /* Reset data only 24h */
