@@ -72,7 +72,7 @@ function initMap() {
       url: "vendor/json.maps.php",
       data: {
         tipo : 'pv',
-        numero: '000',
+        numero: current_session_number,
       },
       success: function(result) {
         var result = $.parseJSON(result);
@@ -159,7 +159,8 @@ function callback(response, status) {
       url: "vendor/json.maps.php",
       data: {
         results: results,
-        tipo: 'distance'
+        tipo: 'distance',
+        numero: current_session_number,
       },
       success: function(result) {
         var result = $.parseJSON(result);
