@@ -6,6 +6,12 @@ body {
   font: normal 400 1.4rem / 1.8 "Muli", sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 .popupPv h5 {
@@ -158,7 +164,8 @@ img {
 }
 
 #sub_ {
-  position: absolute;
+  /*position: absolute;*/
+  z-index: 1;
   bottom: 0;
   border-radius: 0;
   width: 100%;
@@ -253,13 +260,14 @@ img {
 }
 
 .mapsPv ul li .last span {
-  display: block;
+  /*display: block;*/
 }
 
 .mapsPv ul li .last {
   font-weight: bold;
   width: 20%;
   text-align: center;
+  padding: 1.5rem 0;
 }
 
 .marker-link h4 {
@@ -299,13 +307,15 @@ img {
     left: 0;
     bottom: 0;
     top: inherit;
+overflow: auto;
+    flex: 1;    
     /*height: 16vh;*/
     /*background: rgba(255, 255, 255, 0.8);*/
   }
 
   #jsres {
     padding: 0;
-    overflow-y: hidden;
+    overflow-y: auto;
     margin: 0;
   }
 
@@ -356,4 +366,27 @@ img {
   .mapsPv.out #jsres {
     overflow-y: hidden;
   }
+}
+
+.checkbox {
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.3rem;
+  margin: auto;
+  font-size: 1.5rem;
+  vertical-align: top;
+  display: flex;
+  align-items: center;
+  color: green;
+  font-weight: bolder;
+  transition-delay: 1s;
+}
+
+.checkbox>span {
+  display: none;
+}
+
+.checkbox.active>span {
+  display: block;
 }
