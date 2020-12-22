@@ -49,6 +49,7 @@ if (isset($_GET['xx'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <link rel="icon" type="image/png" href="img/favicon.png"/>
+  <link rel="manifest" href="manifest.json">  
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/map.css?v<?php echo date('mdYhisa', time()); ?>">
