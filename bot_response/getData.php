@@ -220,13 +220,32 @@ $result = mysqli_query($con, $query);
     } 
     /* Change status if stop */
     else if($userMsg == 'stop') {
-        $sql = "INSERT INTO `mobile`(`id`, `numero`, `status`, `data_s`, `nome`,`cognome`,`iconsento`,`gps`) VALUES (NULL,'$userNum','0', NULL , NULL, NULL, NULL, NULL) ON DUPLICATE KEY UPDATE `status` = '0' AND `numero` = '$userNum'";
-        $injectStatus = mysqli_query($con,$sql);
-        if($injectStatus) {
-            echo "Iscrizione disattivato ❌\nPotrai sempre attivare il servizio scrivendo (ok) \nti ricordiamo che il servizio è completamente gratuito";
-            $stopQuery = "INSERT INTO `mobile_log`(`id`, `numero`, `data_logo`, `action`, `msg`,`id_address`) VALUES (NULL,'$userNum',NULL, 'disattivato', '$userMsg', '$global_ip')";
-            $injectStatus2 = mysqli_query($con, $stopQuery);    
-        }
+
+        $ifExsist = "SELECT `numero`, `status` FROM `mobile` WHERE `numero` ='$userNum'";
+        $elseExsist = mysqli_query($con, $ifExsist);
+            while($line = mysqli_fetch_array($elseExsist)) {
+                $status = $line['status'];
+
+                switch($status) {
+                    case '1' :
+                        $sql = "INSERT INTO `mobile`(`id`, `numero`, `status`, `data_s`, `nome`,`cognome`,`iconsento`,`gps`) VALUES (NULL,'$userNum','0', NULL , NULL, NULL, NULL, NULL) ON DUPLICATE KEY UPDATE `status` = '0' AND `numero` = '$userNum'";
+                        $injectStatus = mysqli_query($con,$sql);
+                            echo "Iscrizione disattivato ❌\nPotrai sempre attivare il servizio scrivendo (ok) \nti ricordiamo che il servizio è completamente gratuito";
+                        break;
+                    case '0': 
+                        echo "Gentile cliente\nNon risulta iscrizzione a nessuno volantino 📝\nPotrai sempre attivare il servizio scrivendo (ok)\nti ricordiamo che il servizio è completamente gratuito";
+                        break;
+                }
+            }
+
+
+        // $sql = "INSERT INTO `mobile`(`id`, `numero`, `status`, `data_s`, `nome`,`cognome`,`iconsento`,`gps`) VALUES (NULL,'$userNum','0', NULL , NULL, NULL, NULL, NULL) ON DUPLICATE KEY UPDATE `status` = '0' AND `numero` = '$userNum'";
+        // $injectStatus = mysqli_query($con,$sql);
+        // if($injectStatus) {
+        //     echo "Iscrizione disattivato ❌\nPotrai sempre attivare il servizio scrivendo (ok) \nti ricordiamo che il servizio è completamente gratuito";
+        //     $stopQuery = "INSERT INTO `mobile_log`(`id`, `numero`, `data_logo`, `action`, `msg`,`id_address`) VALUES (NULL,'$userNum',NULL, 'disattivato', '$userMsg', '$global_ip')";
+        //     $injectStatus2 = mysqli_query($con, $stopQuery);    
+        // }
 
     } 
 
