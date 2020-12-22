@@ -164,7 +164,7 @@ img {
 }
 
 #sub_ {
-  /*position: absolute;*/
+  position: absolute;
   z-index: 1;
   bottom: 0;
   border-radius: 0;
@@ -309,6 +309,7 @@ img {
     top: inherit;
 overflow: auto;
     flex: 1;    
+    padding-bottom: 15vh;
     /*height: 16vh;*/
     /*background: rgba(255, 255, 255, 0.8);*/
   }
