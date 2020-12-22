@@ -7,6 +7,8 @@ $current_number = $_POST['number'];
 
 if($current_number !='') {
    
+    $delete  = "DELETE FROM `user_pv` WHERE `numero` = '$current_number' AND `status`= '0'";
+    $excDelte = mysqli_query($con, $delete) or die("Delteing is impossible... try again..");
 
     $lvl1 = "SELECT `id_pv`, `status` FROM `user_pv` WHERE `numero` = '$current_number' AND `status` = '1'";
     $executethis = mysqli_query($con, $lvl1) or die("Opps...riproviamo?");
@@ -16,8 +18,9 @@ if($current_number !='') {
             $lvl2 = "UPDATE `user_pv` SET `msgFromPv` = 'true', `status` = '2' WHERE `numero` = '$current_number' AND `id_pv` = '$id'";
             $execute = mysqli_query($con, $lvl2) or die("Opps..scusate");
             
-            
         }
+
+
 
 }
 
