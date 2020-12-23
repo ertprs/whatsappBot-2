@@ -54,6 +54,49 @@ if($userMsg == 'reset') {
 }
 
 
+ /* Support area.. */
+ 
+    
+    $_pattern = "codice err";
+    if(strpos($userMsg, $_pattern ) !== false ) {
+     
+        $support = "SELECT `time_stamp`, `code_report`, `number` FROM `support_register` WHERE `number` = '$userNum' AND `code_report` = '$userMsg'";
+        $control = mysqli_query($con, $support);
+        $rowsCount = mysqli_num_rows($control);
+
+            $todayLong = date("Y-m-d H:i:s");
+            $shortTime = substr($todayLong, 10,3);
+         
+                    if($rowsCount > 0) {
+                        
+                        $updateStatus = "UPDATE `support_register` SET `actual_status` ='crash' WHERE `number`= '$userNum'";
+                        $getUpdate = mysqli_query($con, $updateStatus) or die("Status was not updayted...");
+                        if($shortTime > 14) {
+                            echo "Buonasera\nChiediamo scusa per il disagio.\nVi contattiamo a breve\nPer avere maggiori informazioni\npreghiamo di contattare noi\nsu questa email: \n\nsupportvolantinopiu@gmail.com\n\nCoridali saluti,\nVolantino support team";
+                        }else if($shortTime < 14) {
+                            echo "Buongiorno\nChiediamo scusa per il disagio.\nVi contattiamo a breve\nPer avere maggiori informazioni\npreghiamo di contattare noi\nsu questa email: \n\nsupportvolantinopiu@gmail.com\n\nCoridali saluti,\nVolantino support team";
+                        }
+                            
+                    }else {
+                        $insertSupport = "INSERT INTO `support_register` (`id`, `number`, `code_report`, `actual_status`, `time_stamp`) VALUES(NULL, '$userNum', '$userMsg', 'messaggio', NULL)";
+                        $querySupport = mysqli_query($con, $insertSupport) or die("Attenzione\nMessaggio non e stato inviato!\nControlla se dati nell messaggio visualizati giusto:\nMessaggio composto dal (Codice err:) e numero (esempio: A663)\n Se campo e vuoto torna alla pagina ed invia messggio di nouvo");
+                            if($shortTime > 14) {
+                                 
+                                echo "Buonasera\nIl report è stato inviato, vi contatteremo a breve 📧\nIn attesa della risposta vi chiediamo di verificare i seguenti punti:\n1. Connessione internet sia adeguata 🌐\n2. GPS attivo, ed eventualmente riavviare la pagina e consentire la geolocalizzazione 📍\n3. Cambiare browser (Chrome, Mozilla, Opera) 📱\n\nNel caso i punti sopra evidenziati non risolvano il problema si prega di scrivere (stop) e successivamente di nuovo (ok)";
+    
+                            }else if($shortTime < 14) {
+                                echo "Buongiorno\nIl report è stato inviato, vi contatteremo a breve 📧\nIn attesa della risposta vi chiediamo di verificare i seguenti punti:\n1. Connessione internet sia adeguata 🌐\n2. GPS attivo, ed eventualmente riavviare la pagina e consentire la geolocalizzazione 📍\n3. Cambiare browser (Chrome, Mozilla, Opera) 📱\n\nNel caso i punti sopra evidenziati non risolvano il problema si prega di scrivere (stop) e successivamente di nuovo (ok)";
+                            }
+
+                          
+                    }
+
+    }
+
+
+
+
+
     /* Support area.. */
     
     // $_pattern = "codice report";
