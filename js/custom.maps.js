@@ -166,15 +166,20 @@ function callback(response, status) {
         var result = $.parseJSON(result);
         $("#jsres").html(result);
 
-        $('.checkbox').click(function() {
-            var current_id = $(this).attr('data-id');
+        $('.last').click(function() {
+            var current_id = $(this).find(".checkbox").attr('data-id');
+
+            if ($(this).find(".checkbox").hasClass("active")) {
+                $(this).find(".checkbox").removeClass('active');
+            } else {
+                $(this).find(".checkbox").addClass('active');
+            }
 
             $.ajax({
               url: './vendor/auth.php',
               type: 'post',
               data : {
-                  id: current_id,
-                 
+                  id: current_id,                 
               },
               success: function() {
                   console.log("Success");

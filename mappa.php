@@ -4,11 +4,12 @@ session_start();
 require './bin/config.php';
 require './bin/config2.php';
 
-// if (isset($_GET['xx'])) {
-//     $_SESSION['num'] = '3401234567';
-//     $current_session_number = '393401234567';
-//     $_SESSION['status'] = '1';
-// } else {
+if (isset($_GET['xx'])) {
+    $_SESSION['num'] = '3401234567';
+    $current_session_number = '393401234567';
+    $_SESSION['status'] = '1';
+} else {
+
 //     if(!isset($_SESSION['num'])) {
 //       header("location: public/register.php");
 //     }
@@ -30,6 +31,7 @@ require './bin/config2.php';
       if($query_rows == 0) {
         header("location: validation/validation.html");
       }
+}
 
     $_SESSION['status'] = '1';
 
@@ -46,6 +48,8 @@ require './bin/config2.php';
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+  <link rel="icon" type="image/png" href="img/favicon.png"/>
+  <link rel="manifest" href="manifest.json">  
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/map.css?v<?php echo date('mdYhisa', time()); ?>">

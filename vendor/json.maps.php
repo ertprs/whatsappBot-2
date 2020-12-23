@@ -50,8 +50,10 @@ if ($tipo == 'pv') {
                 Lat AS Latitude,
                 Lon AS Longitude,
                 IdPuntoVendita AS id,
-                regione
+                regione,
+                id_pv
               FROM puntivendita e
+                LEFT JOIN user_pv u ON e.IdPuntoVendita = u.id_pv AND u.status = 3 AND u.numero = '".$_POST['numero']."'
 
               WHERE 1
                 AND Lat > 0
@@ -69,6 +71,7 @@ if ($tipo == 'pv') {
           'regione' => $f['regione'],
           'id' => $f['id'],
           'telefono' => $f['Telefono'],
+          'id_pv' => $f['id_pv'],
           'text' => $results[$n]['distance']['text'],
           'value' => $results[$n]['distance']['value']
         ];
@@ -83,10 +86,6 @@ if ($tipo == 'pv') {
     $n = 0;
     foreach ($address as $key => $val) {
         /**/
-
-        if ($n > 2) {
-          break;
-        }
 
         switch ($val['regione']) {
             case 'Negozio Italia':
@@ -115,7 +114,7 @@ if ($tipo == 'pv') {
               </div>
             
               <div class="last">
-                <div class="check_box"><input type="checkbox" class="checkbox" data-id="pv_'.$val['id'].'"/></div>
+                <div class="checkbox '.($val['id_pv'] != '' ? 'active' : '').'" data-id="pv_'.$val['id'].'"><span>V</span></div>
                 <span> ABBINA </span> 
               </div>
 
