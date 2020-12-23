@@ -197,20 +197,27 @@ $result = mysqli_query($con, $query);
     $sql = "INSERT INTO `mobile`(`id`, `numero`, `status`, `data_s`, `nome`,`cognome`,`iconsento`,`gps`) VALUES (NULL,'$userNum','1',NULL, NULL, NULL, NULL, NULL) ON DUPLICATE KEY UPDATE `status` = '1' AND `numero` = '$userNum'";
     $injectNum = mysqli_query($con,$sql);
 
-    $qqq = "SELECT `data_s`, `numero` FROM `mobile` WHERE `status` = '1' AND `numero` = '$userNum'";
-    $qwer = mysqli_query($con, $qqq);
-        while($rw = mysqli_fetch_array($qwer)) {
-            $data = $rw['data_s'];
-            $dataString = substr($data, 11, -6);
-            $dataInt = (int)$dataString;
-                if($dataInt > 14) {
+    // $qqq = "SELECT `data_s`, `numero` FROM `mobile` WHERE `status` = '1' AND `numero` = '$userNum'";
+    // $qwer = mysqli_query($con, $qqq);
+    //     while($rw = mysqli_fetch_array($qwer)) {
+    //         $data = $rw['data_s'];
+            // $dataString = substr($data, 11, -6);
+            // $dataInt = (int)$dataString;
+
+            $todayLong = date("Y-m-d H:i:s");
+            $substrTime = substr($todayLong, 10,3);
+            
+           
+                if($substrTime > 14) {
                     // echo "Buonasera,\nIscrizione attiva ✅\nper scegliere i tuoi supermercati Sisa preferiti, clicca il seguente link :\n https://testing3.volantinopiu.it/whatsapp/controller/redirection.php?n=$userNum@c.us";
                     echo "Buonasera,\nIscrizione attiva ✅\nper scegliere i tuoi supermercati Sisa preferiti, clicca il seguente link :\n https://testing3.volantinopiu.it/whatsappBot/mappa.php?n=$userNum@c.us";
-                }else if($dataInt < 14) {
+                }else if($substrTime < 14) {
                     // echo "Buongiorno,\nIscrizione attiva ✅\nper scegliere i tuoi supermercati Sisa preferiti, clicca il seguente link :\n https://testing3.volantinopiu.it/whatsapp/controller/redirection.php?n=$userNum@c.us";
-                    echo "Buonasera,\nIscrizione attiva ✅\nper scegliere i tuoi supermercati Sisa preferiti, clicca il seguente link :\n https://testing3.volantinopiu.it/whatsappBot/mappa.php?n=$userNum@c.us";
+                    echo "Buongiorno,\nIscrizione attiva ✅\nper scegliere i tuoi supermercati Sisa preferiti, clicca il seguente link :\n https://testing3.volantinopiu.it/whatsappBot/mappa.php?n=$userNum@c.us";
+                }else {
+                    echo "Salve,\nIscrizione attiva ✅\nper scegliere i tuoi supermercati Sisa preferiti, clicca il seguente link :\n https://testing3.volantinopiu.it/whatsappBot/mappa.php?n=$userNum@c.us";
                 }
-        }
+        // }
 
     
     $logQuery = "INSERT INTO `mobile_log`(`id`, `numero`, `data_logo`,`action`,`msg`, `ip_address`) VALUES (NULL,'$userNum',NULL, 'iscrizione','$userMsg', '$global_ip')";
@@ -228,9 +235,20 @@ $result = mysqli_query($con, $query);
 
                 switch($status) {
                     case '1' :
-                        $sql = "INSERT INTO `mobile`(`id`, `numero`, `status`, `data_s`, `nome`,`cognome`,`iconsento`,`gps`) VALUES (NULL,'$userNum','0', NULL , NULL, NULL, NULL, NULL) ON DUPLICATE KEY UPDATE `status` = '0' AND `numero` = '$userNum'";
-                        $injectStatus = mysqli_query($con,$sql);
-                            echo "Iscrizione disattivato ❌\nPotrai sempre attivare il servizio scrivendo (ok) \nti ricordiamo che il servizio è completamente gratuito";
+                        // $sql = "INSERT INTO `mobile`(`id`, `numero`, `status`, `data_s`, `nome`,`cognome`,`iconsento`,`gps`) VALUES (NULL,'$userNum','0', NULL , NULL, NULL, NULL, NULL) ON DUPLICATE KEY UPDATE `status` = '0' AND `numero` = '$userNum'";
+                        // $injectStatus = mysqli_query($con,$sql);
+                        $userDelete = "DELETE FROM `mobile` WHERE `numero` ='$userNum'";
+                        $excDeleteUser = mysqli_query($con, $userDelete);
+                            if($excDeleteUser) {
+                                $delUsrpv = "DELETE FROM `user_pv` WHERE `numero` ='$userNum'";
+                                $excdelUsrpv = mysqli_query($con, $delUsrpv);
+                                 if($excdelUsrpv) {
+                                     $delMsg = "DELETE FROM `user_send` WHERE `numero` = '$userNum'";
+                                     $excdelMsg = mysqli_query($con, $delMsg);
+                                        echo "Iscrizione disattivato ❌\nPotrai sempre attivare il servizio scrivendo (ok) \nti ricordiamo che il servizio è completamente gratuito";
+                                 }
+                            }
+                          
                         break;
                     case '0': 
                         echo "Gentile cliente\nNon risulta iscrizzione a nessuno volantino 📝\nPotrai sempre attivare il servizio scrivendo (ok)\nti ricordiamo che il servizio è completamente gratuito";
