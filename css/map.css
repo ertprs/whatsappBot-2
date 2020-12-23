@@ -7,11 +7,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 
-  height: 100vh;
+  height: calc(100%);
   display: flex;
   flex-direction: column;
-  max-height: 100vh;
+  /*max-height: calc(100%);*/
   overflow: hidden;
+  background-color: #3fa535;
+}
+
+@media screen and (orientation:landscape) {
+  .main {
+    max-width: 30vw;
+    margin: auto;
+    border: 1px solid #eee;
+    background-color: #fff;
+  }
 }
 
 .popupPv h5 {
@@ -164,7 +174,7 @@ img {
 }
 
 #sub_ {
-  position: absolute;
+  /*position: absolute;*/
   z-index: 1;
   bottom: 0;
   border-radius: 0;
@@ -175,6 +185,7 @@ img {
   border: 1rem solid #3fa535;
   color: #000;
   font-size: 1.5rem;
+  display: none;
 }
 
 .btn_top,
@@ -208,6 +219,7 @@ img {
   /*width: 40%;*/
   display: flex;
   flex-direction: column;
+  background-color: #fff;
 }
 
 #jsres {
@@ -248,13 +260,13 @@ img {
 .mapsPv ul li .center span {
   font-weight: bold;
   font-size: 70%;
-  border-right: 1px solid #eee;
+  /*border-right: 1px solid #eee;*/
   padding-right: 0.3rem;
 }
 
 .mapsPv h5 {
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1rem;
   padding: 0.2rem 0;
   margin: 0;
 }
@@ -290,84 +302,85 @@ img {
 }
 
 #header h2 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: bold;
   padding-top: .2rem;
 }
 
 #header p {
-  line-height: 1.6rem;
+  line-height: 1rem;
   font-size: 1rem;
   margin-bottom: 0;
 }
 
-@media screen and (orientation:portrait) {
-  .mapsPv {
-    width: 100%;
-    left: 0;
-    bottom: 0;
-    top: inherit;
-overflow: auto;
-    flex: 1;    
-    padding-bottom: 15vh;
-    /*height: 16vh;*/
-    /*background: rgba(255, 255, 255, 0.8);*/
-  }
-
-  #jsres {
-    padding: 0;
-    overflow-y: auto;
-    margin: 0;
-  }
-
-  .mapsPv ul li {
-    font-size: 65%;
-  }
-
-  .btn_top {
-    display: flex;
-  }
-
-  #header {
-    display: block;
-  }
-
-  #header img {
-    margin: auto;
-  }
-
-  .mapsPv.in {
-    height: 80vh;
-  }
-
-  .mapsPv.out {
-    /*height: 16vh;*/
-  }
-
-  .mapsPv.in .btn_top {
-    display: none;
-  }
-
-  .mapsPv.in .btn_bottom {
-    display: flex;
-  }
-
-  .mapsPv.out .btn_top {
-    display: flex;
-  }
-
-  .mapsPv.out .btn_bottom {
-    display: none;
-  }
-
-  .mapsPv.in #jsres {
-    overflow-y: auto;
-  }
-
-  .mapsPv.out #jsres {
-    overflow-y: hidden;
-  }
+/*@media screen and (orientation:portrait) {*/
+.mapsPv {
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  top: inherit;
+  overflow: auto;
+  flex: 1;
+  /*padding-bottom: 15vh;*/
+  /*height: 16vh;*/
+  /*background: rgba(255, 255, 255, 0.8);*/
 }
+
+#jsres {
+  padding: 0;
+  overflow-y: auto;
+  margin: 0;
+}
+
+.mapsPv ul li {
+  font-size: 65%;
+}
+
+.btn_top {
+  display: flex;
+}
+
+#header {
+  display: block;
+}
+
+#header img {
+  margin: auto;
+}
+
+.mapsPv.in {
+  height: 80vh;
+}
+
+.mapsPv.out {
+  /*height: 16vh;*/
+}
+
+.mapsPv.in .btn_top {
+  display: none;
+}
+
+.mapsPv.in .btn_bottom {
+  display: flex;
+}
+
+.mapsPv.out .btn_top {
+  display: flex;
+}
+
+.mapsPv.out .btn_bottom {
+  display: none;
+}
+
+.mapsPv.in #jsres {
+  overflow-y: auto;
+}
+
+.mapsPv.out #jsres {
+  overflow-y: hidden;
+}
+
+/* } */
 
 .checkbox {
   width: 1rem;

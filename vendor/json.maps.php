@@ -43,6 +43,8 @@ if ($tipo == 'pv') {
     $toReturn = '';
 
     $address = array();
+    $address_selected = array();
+
     $sql = "SELECT
                 Indirizzo,
                 Location,
@@ -63,18 +65,40 @@ if ($tipo == 'pv') {
     $res = $db->query($sql);
 
     while ($f = $res->fetch()) {
-        $address[] = [
-          'address' => $f['Indirizzo'],
-          'Latitude' => $f['Latitude'],
-          'Longitude' => $f['Longitude'],
-          'nome' => $f['Location'],
-          'regione' => $f['regione'],
-          'id' => $f['id'],
-          'telefono' => $f['Telefono'],
-          'id_pv' => $f['id_pv'],
-          'text' => $results[$n]['distance']['text'],
-          'value' => $results[$n]['distance']['value']
-        ];
+        switch ($f['id_pv']) {
+            case '':
+                $address[] = [
+                  'address' => $f['Indirizzo'],
+                  'Latitude' => $f['Latitude'],
+                  'Longitude' => $f['Longitude'],
+                  'nome' => $f['Location'],
+                  'regione' => $f['regione'],
+                  'id' => $f['id'],
+                  'telefono' => $f['Telefono'],
+                  'id_pv' => $f['id_pv'],
+                  'text' => $results[$n]['distance']['text'],
+                  'duration' => $results[$n]['duration']['text'],
+                  'value' => $results[$n]['distance']['value']
+                ];
+            break;
+          
+            default:
+                $address_selected[] = [
+                  'address' => $f['Indirizzo'],
+                  'Latitude' => $f['Latitude'],
+                  'Longitude' => $f['Longitude'],
+                  'nome' => $f['Location'],
+                  'regione' => $f['regione'],
+                  'id' => $f['id'],
+                  'telefono' => $f['Telefono'],
+                  'id_pv' => $f['id_pv'],
+                  'text' => $results[$n]['distance']['text'],
+                  'duration' => $results[$n]['duration']['text'],
+                  'value' => $results[$n]['distance']['value']
+                ];
+            break;
+        }
+
 
         $n++;
     }
@@ -83,8 +107,14 @@ if ($tipo == 'pv') {
         return $a['value'] <=> $b['value'];
     });
 
+    usort($address_selected, function ($a, $b) {
+        return $a['value'] <=> $b['value'];
+    });
+
+    $result = array_merge($address_selected, $address);
+
     $n = 0;
-    foreach ($address as $key => $val) {
+    foreach ($result as $key => $val) {
         /**/
 
         switch ($val['regione']) {
@@ -107,7 +137,7 @@ if ($tipo == 'pv') {
               <a href="#"><img src="'.$logo.'" alt="" title="" /></a>
 
               <div class="center">
-                <span> ' . $val['text'] . ' </span>
+                <span> ' . $val['text'] . ' ' . $val['duration'] . ' </span>
                 <h4>'.strtoupper($val['regione']).'</h4>
                 <h5>'.strtoupper($val['nome']).'</h5>
                 '.ucwords(strtolower($val['address'])).' 

@@ -65,7 +65,7 @@ if (isset($_GET['xx'])) {
   <title>Punti vendita</title>
 
 </head>
-<body>
+<body class="main">
 
   <div id="header">
     <img src="img/header.png" class="img-fluid">

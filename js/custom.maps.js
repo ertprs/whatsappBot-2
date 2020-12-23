@@ -152,6 +152,7 @@ function getPV(item) {
 }
 
 function callback(response, status) {
+  console.log(response);
   if (status == "OK") {
     var results = response.rows[0].elements;
     $.ajax({
