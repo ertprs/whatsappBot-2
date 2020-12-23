@@ -19,8 +19,9 @@ if (isset($_GET['xx'])) {
 /* Rafactoring new template-- */
     $whatsapp_number= $_GET['n'];
     $_SESSION['num'] = substr($whatsapp_number, 0, 12);
+    
     $current_session_number = $_SESSION['num'];
-
+    $generete_key = substr($current_session_number, -3);
   
 
 
@@ -79,6 +80,14 @@ if (isset($_GET['xx'])) {
     <!--div class="btn_top text-center"> <i class="far fa-chevron-up"></i> </div-->
     
     <!--div class="btn_bottom text-center"> <i class="far fa-chevron-down"></i> </div-->
+
+    <span>
+      <h3>Caricamento in corso...</h3>
+      <p>Si prega di abilitare il <strong>GPS</strong> per una maggior accuratezza dei dati</p>
+
+      <a class="btn btn-sm btn-danger" href="https://api.whatsapp.com/send?phone=+393294557479&text=Codice err: <?='A'.$generete_key; ?>">Clicca qui se hai problemi!</a>      
+
+    </span>
     <ul id="jsres"> </ul>
   </div>
   <button id="sub_" class="btn btn-success w100">SALVA NEGOZI</button> 

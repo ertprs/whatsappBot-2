@@ -5,7 +5,7 @@
 
 
 function initMap() {
-  $.getScript("js/markerclusterer.js");
+  //$.getScript("js/markerclusterer.js");
 
   var map, infoWindow, myMarker;
 
@@ -26,6 +26,7 @@ function initMap() {
 
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
+    //alert(navigator.geolocation);
     navigator.geolocation.getCurrentPosition(function(position) {
       currentPos = {
         lat: position.coords.latitude,
@@ -118,11 +119,13 @@ function initMap() {
           travelMode: 'DRIVING',
         }, callback);
 
+        /*
         var options = {
           imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
         };
 
         var markerCluster = new MarkerClusterer(map, markers, options);
+        */
 
         // Trigger a click event on each marker when the corresponding marker link is clicked
         $(document).on("click", ".marker-link", function(e) {
@@ -152,7 +155,7 @@ function getPV(item) {
 }
 
 function callback(response, status) {
-  console.log(response);
+  //console.log(response);
   if (status == "OK") {
     var results = response.rows[0].elements;
     $.ajax({
@@ -165,7 +168,10 @@ function callback(response, status) {
       },
       success: function(result) {
         var result = $.parseJSON(result);
+
+        $(".mapsPv > span").css("display", "none");
         $("#jsres").html(result);
+        $("#sub_").css('display', 'block');
 
         $('.last').click(function() {
             var current_id = $(this).find(".checkbox").attr('data-id');
@@ -237,6 +243,7 @@ function codeLatLng(lat, lng) {
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, map) {
+  alert("Il browser non supporta la geolocalizzazione");
   infoWindow.setPosition(map.getCenter());
   infoWindow.setContent(browserHasGeolocation ?
     'Error: The Geolocation service failed.' :

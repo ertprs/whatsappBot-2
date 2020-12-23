@@ -24,6 +24,22 @@ body {
   }
 }
 
+.mapsPv>span {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  text-align: center;
+}
+
+.mapsPv>span>p {
+  line-height: 1.8rem;
+  font-size: 70%;
+  font-style: italic;
+}
+
 .popupPv h5 {
   background-color: #eee;
   padding: 5px 0;

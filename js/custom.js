@@ -21,5 +21,6 @@ $(document).ready(function() {
 	if ($(window).height() < 600) {
 		$("#header > img ").css('max-width', '80%');
 	}
-	$("#sub_").css('display', 'block');
+
 });
+
