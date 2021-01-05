@@ -128,7 +128,7 @@ if ($selectRows > 0) {
 
 
                     if ($allRows == 0 && $bool) {
-                        $text2 = "Complimenti , notifiche attivate!.\n\nPotrai disattivare le notifiche in qualsiasi momento inviando STOP.\n\nDa ora in poi riceverai in anteprima i volantini dei tuoi supermercati Sisa preferiti.\nTi ricordiamo che potrai in qualsiasi momento aggiungere o modificare la scelta dei punti di vendita da abbinare alle notifiche cliccando il seguente link:\n\nhttps://testing3.volantinopiu.it/whatsappBot/mappa.php?n=$num@c.us";
+                        $text2 = "Complimenti, notifiche attivate!\n\nRiceverai in anteprima i volantini dei tuoi supermercati Sisa preferiti.\nPuoi aggiungere o modificare la scelta dei negozi preferiti cliccando il seguente link:\n\nhttps://testing3.volantinopiu.it/whatsappBot/mappa.php?n=$num@c.us\n\nPotrai disattivare le notifiche inviando STOP.\n\n";
 
                         $bool = false;
 
